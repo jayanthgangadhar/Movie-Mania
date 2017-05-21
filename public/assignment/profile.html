@@ -6,22 +6,25 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 </head>
-<body>
+<body class="body-cust">
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#" class="navbar-link">
+                     <span class="glyphicon glyphicon-plus">
+                     </span>
+            </a>
+        </div>
+
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                Fixed Top
+                Profile
             </a>
-            <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
-          <span class="glyphicon glyphicon-plus">
-          </span>
-                </a>
-            </p>
         </div>
-    </div>
+
+        </div>
+
 </nav>
 
 
@@ -46,11 +49,12 @@
                 <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
             </div>
         </form>
-
-        <a class="btn btn-primary btn-block"
-           href="website-list.html">Websites</a>
-        <a class="btn btn-danger  btn-block"
-           href="login.html">Logout</a>
+        <div class="navbar-bottom-btn">
+            <a class="btn btn-primary btn-block"
+               href="website-list.html">Websites</a>
+            <a class="btn btn-danger  btn-block"
+               href="login.html">Logout</a>
+        </div>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

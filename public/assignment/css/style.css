@@ -1,7 +1,44 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("../vendor/images/home.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+
+.body-cust
+{
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
 input.form-control {
     margin-bottom: 5px;
 }
 
-body {
-    padding-top: 36px;
+.navbar-bottom-btn{
+    padding-bottom: 70px;
+
 }
+
+nav.navbar.navbar-default.navbar-fixed-top
+{
+    padding-right: 15px;
+
+
+}
+/*.container-fluid{*/
+    /*width:100%;*/
+/*}*/
+
+.
