@@ -34,6 +34,7 @@ module.exports = function(app)
             );
     }
 
+    
     function createMessage(req, res) {
         TestModel
             .create(req.body)
