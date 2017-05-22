@@ -17,12 +17,20 @@ body, html {
     background-size: cover;
 }
 
+.h-widget{
+    margin-top: 17px;
+}
+
+.h2-widget{
+    margin-top: 5px;
+}
+
 .body-cust
 {
     padding-bottom: 60px;
     padding-top: 60px;
 }
-input.form-control {
+input.form-control ,textarea.form-control, select.form-control{
     margin-bottom: 5px;
 }
 
@@ -37,8 +45,37 @@ nav.navbar.navbar-default.navbar-fixed-top
 
 
 }
-/*.container-fluid{*/
-    /*width:100%;*/
-/*}*/
+nav.navbar.navbar-default.navbar-fixed-bottom.nav-widget{
+    margin-top:30px;
+}
+
+
+.widget > img{
+    width:100%;
+
+
+}
+.widget{
+    margin-bottom: 10px;
+}
+.container-fluid{
+    width:100%;
+}
+
+.wd-widget-toolbar{
+    position: absolute;
+    right:15px;
+    background: white;
+    opacity:0.9;
+    padding: 5px;
+    border-radius-bottomleft: 10px;
+}
+
+.widget-choose{
+    width: 100%;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
 
 .
