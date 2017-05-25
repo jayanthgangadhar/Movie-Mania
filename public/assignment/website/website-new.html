@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width= device-width , initial-scale=1">
-    <title>Page-Edit</title>
-    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <title>New Website</title>
+    <link href="../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body class="body-cust">
 
@@ -15,13 +15,13 @@
             <div class="col-xs-4 hidden-xs">
                 <div class="container-fluid">
                     <div class="navbar-text pull-right">
-                        <a href="page-new.html" class="navbar-link active">
+                        <a href="website-new.html" class="navbar-link active">
                      <span class="glyphicon glyphicon-plus">
                      </span>
                         </a>
                     </div>
                     <div class="navbar-text pull-left">
-                        <a href="page-list.html" class="navbar-link active">
+                        <a href="website-new.html" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
                         </a>
@@ -29,17 +29,17 @@
 
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">
-                            Pages
+                            Websites
                         </a>
                     </div>
 
                 </div>
 
             </div>
-            <div class="col-sm-12 col-sm-8 hidden-xs">
+                <div class="col-sm-12 col-sm-8 hidden-xs">
 
                 <div class="navbar-text pull-right">
-                    <a href="page-list.html" class="navbar-link">
+                    <a href="website-list.html" class="navbar-link">
                              <span class="glyphicon glyphicon glyphicon-ok">
                              </span>
                     </a>
@@ -47,21 +47,21 @@
 
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                        Edit Page
+                        New Website
                     </a>
                 </div>
 
-            </div>
+                </div>
             <div class="col-xs-12 visible-xs">
 
                 <div class="navbar-text pull-right">
-                    <a href="page-list.html" class="navbar-link">
+                    <a href="website-list.html" class="navbar-link">
                              <span class="glyphicon glyphicon glyphicon-ok">
                              </span>
                     </a>
                 </div>
                 <div class="navbar-text pull-left">
-                    <a href="page-list.html" class="navbar-link active">
+                    <a href="website-list.html" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
                     </a>
@@ -69,7 +69,7 @@
 
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                        Edit Page
+                        New Website
                     </a>
                 </div>
 
@@ -100,7 +100,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-lg-4 col-xs-10">
-                                <a href="widget-list.html">Blogs</a>
+                                <a href="../page/page-list.html">Website 1</a>
                             </div>
                             <div class="col-lg-3 visible-lg">
                                 01/01/2017
@@ -110,7 +110,7 @@
                             </div>
                             <div class="col-xs-2" >
 
-                                <a href="page-edit.html">
+                                <a href="website-edit.html">
                                     <span class="glyphicon glyphicon-cog pull-right " ></span>
                                 </a>
                             </div>
@@ -119,7 +119,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-lg-4 col-xs-10">
-                                <a href="widget-list.html">Home</a>
+                                <a href="../page/page-list.html">Website 2</a>
                             </div>
                             <div class="col-lg-3 visible-lg">
                                 02/02/2017
@@ -128,7 +128,7 @@
                                 14/02/2017
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="website-edit.html">
                                     <span class="glyphicon glyphicon-cog pull-right " ></span>
                                 </a>
                             </div>
@@ -137,7 +137,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-lg-4 col-xs-10">
-                                <a href="widget-list.html">About Us</a>
+                                <a href="../page/page-list.html">Website 3</a>
                             </div>
                             <div class="col-lg-3 visible-lg">
                                 03/03/2017
@@ -146,7 +146,7 @@
                                 15/03/2017
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="website-edit.html">
                                     <span class="glyphicon glyphicon-cog pull-right " ></span>
                                 </a>
                             </div>
@@ -155,7 +155,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-lg-4 col-xs-10">
-                                <a href="widget-list.html">Contact</a>
+                                <a href="../page/page-list.html">Website 4</a>
                             </div>
                             <div class="col-lg-3 visible-lg">
                                 04/04/2017
@@ -164,7 +164,7 @@
                                 16/04/2017
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="website-edit.html">
                                     <span class="glyphicon glyphicon-cog pull-right "></span>
                                 </a>
                             </div>
@@ -178,16 +178,15 @@
             <label for="name">Name</label>
             <input class="form-control"
                    placeholder="Name"
-                   value="Name"
                    id="name"/>
 
-            <label for="name">Title</label>
-            <input class="form-control"
-                   placeholder="Name"
-                   value="Title"
-                   id="title"/>
+            <label for="description">Description</label>
+            <textarea class="form-control"
+                      id="description"
+                      placeholder="Description"
+                      rows="5"></textarea>
 
-            <a href="page-list.html" class="btn btn-block btn-danger">Delete</a>
+            <a href="website-list.html" class="btn btn-block btn-danger">Delete</a>
 
         </div>
 
@@ -199,7 +198,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="profile.html" class="navbar-link">
+            <a href="../user/profile.html" class="navbar-link">
                      <span class="glyphicon glyphicon-user">
                      </span>
             </a>
