@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width= device-width , initial-scale=1">
-    <title>New Page</title>
-    <link href="../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body class="body-cust">
+
 
 <nav class="navbar navbar-default navbar-fixed-top active">
     <div class="container-fluid">
@@ -15,20 +6,20 @@
             <div class="col-xs-4 hidden-xs">
                 <div class="container-fluid">
                     <div class="navbar-text pull-right">
-                        <a href="page-new.html" class="navbar-link active">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link active">
                      <span class="glyphicon glyphicon-plus">
                      </span>
                         </a>
                     </div>
                     <div class="navbar-text pull-left">
-                        <a href="page-new.html" class="navbar-link active">
+                        <a href="#!/user/{{model.userId}}/website" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
                         </a>
                     </div>
 
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" >
                             Pages
                         </a>
                     </div>
@@ -39,14 +30,14 @@
             <div class="col-sm-12 col-sm-8 hidden-xs">
 
                 <div class="navbar-text pull-right">
-                    <a href="page-list.html" class="navbar-link">
+                    <a  class="navbar-link">
                              <span class="glyphicon glyphicon glyphicon-ok">
                              </span>
                     </a>
                 </div>
 
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" >
                         New Page
                     </a>
                 </div>
@@ -55,20 +46,20 @@
             <div class="col-xs-12 visible-xs">
 
                 <div class="navbar-text pull-right">
-                    <a href="page-list.html" class="navbar-link">
+                    <a class="navbar-link">
                              <span class="glyphicon glyphicon glyphicon-ok">
                              </span>
                     </a>
                 </div>
                 <div class="navbar-text pull-left">
-                    <a href="page-list.html" class="navbar-link active">
+                    <a href="#!/user/{{model.userId}}/website" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
                     </a>
                 </div>
 
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" >
                         New Page
                     </a>
                 </div>
@@ -97,93 +88,45 @@
 
                         </div>
                     </li>
-                    <li class="list-group-item">
+                    <li ng-repeat="page in model.pages" class="list-group-item">
+
                         <div class="row">
                             <div class="col-lg-4 col-xs-10">
-                                <a href="page-list.html">Blogs</a>
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
                             </div>
                             <div class="col-lg-3 visible-lg">
-                                01/01/2017
+                                {{page.created}}
                             </div>
                             <div class="col-lg-3 visible-lg">
-                                13/01/2017
+                                {{page.accessed}}
                             </div>
                             <div class="col-xs-2" >
 
-                                <a href="page-edit.html">
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                                     <span class="glyphicon glyphicon-cog pull-right " ></span>
                                 </a>
                             </div>
                         </div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-lg-4 col-xs-10">
-                                <a href="page-list.html">Home</a>
-                            </div>
-                            <div class="col-lg-3 visible-lg">
-                                02/02/2017
-                            </div>
-                            <div class="col-lg-3 visible-lg">
-                                14/02/2017
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="page-edit.html">
-                                    <span class="glyphicon glyphicon-cog pull-right " ></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-lg-4 col-xs-10">
-                                <a href="page-list.html">About</a>
-                            </div>
-                            <div class="col-lg-3 visible-lg">
-                                03/03/2017
-                            </div>
-                            <div class="col-lg-3 visible-lg">
-                                15/03/2017
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="page-edit.html">
-                                    <span class="glyphicon glyphicon-cog pull-right " ></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-lg-4 col-xs-10">
-                                <a href="page-list.html">Contact Us</a>
-                            </div>
-                            <div class="col-lg-3 visible-lg">
-                                04/04/2017
-                            </div>
-                            <div class="col-lg-3 visible-lg">
-                                16/04/2017
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="page-edit.html">
-                                    <span class="glyphicon glyphicon-cog pull-right "></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                                    </ul>
             </div>
 
         </div>
         <div class="col-xs-12 col-sm-8">
             <label for="name">Name</label>
             <input class="form-control"
+                   ng-model="model.page.name"
                    placeholder="Name"
                    id="name"/>
 
             <label for="name">Title</label>
             <input class="form-control"
+                   ng-model="model.page.title"
+
                    placeholder="Title"
                    id="title"/>
+
+            <a ng-click="model.createPage(model.page)" class="btn btn-block btn-success">Create</a>
 
 
 
@@ -197,7 +140,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="../user/profile.html" class="navbar-link">
+            <a href="#!/register" class="navbar-link">
                      <span class="glyphicon glyphicon-user">
                      </span>
             </a>
@@ -208,5 +151,3 @@
     </div>
 </nav>
 
-</body>
-</html>

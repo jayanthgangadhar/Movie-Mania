@@ -1,48 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="WAM">
 <head>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>-->
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!--user-->
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+
+    <!--website-->
+    <script src="views/website/controllers/website-edit.controller.client.js"></script>
+    <script src="views/website/controllers/website-list.controller.client.js"></script>
+    <script src="views/website/controllers/website-new.controller.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+
+    <!--page-->
+    <script src="views/page/controllers/page-list.controller.client.js"></script>
+    <script src="views/page/controllers/page-edit.controller.client.js"></script>
+    <script src="views/page/controllers/page-new.controller.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+
+    <!--widget-->
+    <script src="views/widget/controllers/widget-list.controller.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width= device-width , initial-scale=1">
     <title>HOME</title>
     <link href="css/style.css" rel="stylesheet">
-    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-    <div class="bg"></div>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Home</a>
-            </div>
-            <div>
-                <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="user/login.view.client.html">Login</a></li>
-                        <li><a href="user/register.html">Register</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div ng-view>
 
-</body>
-</html>
-
-
-
-
-
-
-
+    </div>
 
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
