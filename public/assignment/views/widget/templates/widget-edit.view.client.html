@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div ng-switch="model.widget.widgetType">
+        <div ng-switch-when="HEADING">
+            <ng-include src=" 'views/widget/templates/editors/widget-heading-editor.view.client.html' "></ng-include>
+        </div>
+        <div ng-switch-when="IMAGE">
+            <ng-include src=" 'views/widget/templates/editors/widget-image-editor.view.client.html' "></ng-include>
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            <ng-include src=" 'views/widget/templates/editors/widget-youtube-editor.view.client.html' "></ng-include>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link active">
+                     <span class="glyphicon glyphicon-plus">
+                     </span>
+            </a>
+        </div>
+
+        <div class="navbar-text pull-left">
+            <a href="../../page/templates/page-list.view.client.html" class="navbar-link active">
+                     <span class="glyphicon glyphicon-chevron-left">
+                     </span>
+            </a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" >
+                Widgets
+            </a>
+        </div>
+
+    </div>
+
+</nav>
+
+
+<div class="form-group container Uname">
+
+    <div class="form-group">
+        <label for="wid-name">Name</label>
+        <input type="text" id="wid-name" class="form-control" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+        <label for="widgetText">Text</label>
+        <input type="text" id="widgetText" class="form-control" placeholder="Text">
+    </div>
+
+    <div class="form-group">
+        <label for="widgetUrl">URL</label>
+        <input  ng-model="model.widget.url"
+                type="url" min="0"
+                id="widgetUrl" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+        <label for="widgetWidth">Width</label>
+        <input type="text" id="widgetWidth" ng-model="model.widget.width" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+        <label for="widgetFile">Upload</label>
+        <input type="file" id="widgetFile" class="form-control" placeholder="No file chosen">
+    </div>
+
+    <div class="form-group">
+        <a class="btn btn-primary btn-block">Upload Image</a>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-info btn-block" ng-click="model.updateWidget(model.widget)">Update</a>
+    </div>
+    <div class="form-group ">
+        <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom nav-widget">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/register" class="navbar-link">
+                     <span class="glyphicon glyphicon-user">
+                     </span>
+            </a>
+        </div>
+
+
+
+    </div>
+</nav>
+
+

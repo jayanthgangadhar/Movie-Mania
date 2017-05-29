@@ -1,0 +1,76 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link active">
+                     <span class="glyphicon glyphicon-plus">
+                     </span>
+            </a>
+        </div>
+
+        <div class="navbar-text pull-left">
+            <a href="../../page/templates/page-list.view.client.html" class="navbar-link active">
+                     <span class="glyphicon glyphicon-chevron-left">
+                     </span>
+            </a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" >
+                Widgets
+            </a>
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="form-group container">
+
+    <div class="form-group">
+        <label for="widgetName">Name</label>
+        <input type="text" id="widgetName" placeholder="Name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="widgetText">Text</label>
+        <input type="text" id="widgetText" placeholder="Text" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="widgetUrl">URL</label>
+        <input type="url" min="0" ng-model="model.widget.url" id="widgetUrl" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="widgetWidth">Width</label>
+        <input ng-model="model.widget.width" type="text" id="widgetWidth" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <a class="btn btn-info btn-block" ng-click="model.updateWidget(model.widget)">
+            Update
+        </a>
+    </div>
+
+
+    <div >
+        <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom nav-widget">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/register" class="navbar-link">
+                     <span class="glyphicon glyphicon-user">
+                     </span>
+            </a>
+        </div>
+
+
+
+    </div>
+</nav>
+
+

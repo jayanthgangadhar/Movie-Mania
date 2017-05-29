@@ -1,13 +1,14 @@
 (function () {
     angular
         .module("WAM")
-        .service("widgetService", widgetService)
+        .service("widgetService", widgetService);
 
     function widgetService() {
         this.findWidgetByPageId = findWidgetByPageId;
-        this.findWebsiteById = findWidgetById;
-        this.deleteWebsite = deleteWidget;
+        this.deleteWidget = deleteWidget;
         this.createWidget = createWidget;
+        this.findWidgetById = findWidgetById;
+        this.updateWidget = updateWidget;
 
         var widgets = [
             { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -24,7 +25,7 @@
         function deleteWidget(widgetId) {
             var widget = findWidgetById(widgetId);
 
-            var index = websites.indexOf(website);
+            var index = widgets.indexOf(widget);
             widgets.splice(index,1);
 
         }
@@ -46,10 +47,36 @@
             })
         }
 
+        function updateWidget(widgetId, widget) {
+            for (var w in widgets){
+                if(widgets[w]._id === widgetId){
+                    switch(widget.widgetType){
+                        case "HEADER":
+                            widgets[w].size = widget.size;
+                            widgets[w].text = widget.text;
+                            return widgets[w];
+                        case "IMAGE":
+                            widgets[w].url = widget.url;
+                            widgets[w].width = widget.width;
+                            return widgets[w];
+                        case "YOUTUBE":
+                            widgets[w].url = widget.url;
+                            widgets[w].width = widget.width;
+                            return widgets[w];
+                        default:
+                            return null;
+                    }
+                }
+            }return null;
+
+        }
+
         function createWidget(pageId, widget) {
 
-            // website._id = (new Date()).getTime() + "";
+            widget._id = (new Date()).getTime() + "";
+            widget.pageId = pageId;
             widgets.push(widget);
+            return widget;
 
         }
 

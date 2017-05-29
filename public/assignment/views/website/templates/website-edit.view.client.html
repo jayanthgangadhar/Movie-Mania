@@ -12,7 +12,7 @@
                         </a>
                     </div>
                     <div class="navbar-text pull-left">
-                        <a href="website-list.view.client.html" class="navbar-link active">
+                        <a href="#!/user/{{model.userId}}" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
                         </a>
@@ -30,14 +30,14 @@
             <div class="col-sm-12 col-sm-8 hidden-xs">
 
                 <div class="navbar-text pull-right">
-                    <a href="website-list.view.client.html" class="navbar-link">
+                    <a class="navbar-link">
                              <span class="glyphicon glyphicon glyphicon-ok">
                              </span>
                     </a>
                 </div>
 
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" >
                         Edit Website
                     </a>
                 </div>
@@ -129,6 +129,8 @@
                       rows="5"></textarea>
 
             <a ng-click="model.deleteWebsite()" class="btn btn-block btn-danger">Delete</a>
+
+            <a ng-click="model.updateWebsite(model.website)" class="btn btn-block btn-info">Update</a>
 
         </div>
 

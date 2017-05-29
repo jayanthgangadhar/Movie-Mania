@@ -3,14 +3,14 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="widget-choose.view.client.html" class="navbar-link active">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link active">
                      <span class="glyphicon glyphicon-plus">
                      </span>
             </a>
         </div>
 
         <div class="navbar-text pull-left">
-            <a href="../../page/templates/page-list.view.client.html" class="navbar-link active">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
             </a>
@@ -28,34 +28,33 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid " style="padding-bottom: 200px">
     <div ng-repeat="widget in model.widgets">
         <div class="wd-widget-toolbar ">
-            <a href="widget-heading.view.client.html">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
             <span class="glyphicon glyphicon-align-justify pull-right"></span>
         </div>
 
-        <div ng-include="model.widgetUrl(widget)"></div>
 
-        <!--<div ng-switch="widget.widgetType" >-->
-            <!--<div ng-switch-when="HEADING" >-->
-                <!--<div ng-include=" 'views/widget/templates/widget-heading.view.client.html'"></div>-->
-            <!--</div>-->
+        <div ng-switch="widget.widgetType" >
+            <div ng-switch-when="HEADING" >
+                <ng-include src=" 'views/widget/templates/widget-heading.view.client.html'"></ng-include>
+            </div>
 
-            <!--<div ng-switch-when="IMAGE">-->
-                <!--<div ng-include=" 'views/widget/templates/widget-image.view.client.html'"></div>-->
-             <!--</div>-->
+            <div ng-switch-when="IMAGE">
+                <ng-include src=" 'views/widget/templates/widget-image.view.client.html'"></ng-include>
+             </div>
 
-            <!--<div ng-switch-when="HTML"-->
-                 <!--ng-bind-html="model.trust(widget.text)">-->
-            <!--</div>-->
+            <div ng-switch-when="HTML"
+                 ng-bind-html="model.getTrustedHtml(widget.text)">
+            </div>
 
-            <!--<div ng-switch-when="YOUTUBE">-->
-                <!--<div ng-include=" 'views/widget/templates/widget-youtube.view.client.html'"></div>-->
-            <!--</div>-->
-        <!--</div>-->
+            <div ng-switch-when="YOUTUBE">
+                <ng-include src=" 'views/widget/templates/widget-youtube.view.client.html'"></ng-include>
+            </div>
+        </div>
 
     </div>
 </div>
@@ -68,8 +67,5 @@
                      </span>
             </a>
         </div>
-
-
-
     </div>
 </nav>

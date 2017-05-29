@@ -10,6 +10,7 @@
         model.pageId= $routeParams.pageId;
         model.userId= $routeParams.userId;
         model.deletePage  = deletePage;
+        model.updatePage = updatePage;
 
         function init() {
             model.pages = pageService.findPageByWebsiteId(model.websiteId);
@@ -22,6 +23,11 @@
             pageService.deletePage(model.pageId);
             $location.url('/user/' +model.userId+'/website/' + model.websiteId +'/page');
 
+        }
+
+        function updatePage(page){
+            var newPage= pageService.updatePage(model.pageId, page);
+            $location.url('/user/' +model.userId+'/website/' + model.websiteId +'/page');
         }
 
 

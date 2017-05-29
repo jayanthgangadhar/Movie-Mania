@@ -12,14 +12,14 @@
                         </a>
                     </div>
                     <div class="navbar-text pull-left">
-                        <a href="website-list.view.client.html" class="navbar-link active">
+                        <a href="#!/user/{{model.userId}}" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
                         </a>
                     </div>
 
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" >
                             Websites
                         </a>
                     </div>
@@ -30,14 +30,14 @@
             <div class="col-sm-12 col-sm-8 hidden-xs">
 
                 <div class="navbar-text pull-right">
-                    <a href="website-list.view.client.html" class="navbar-link">
+                    <a class="navbar-link">
                              <span class="glyphicon glyphicon glyphicon-ok">
                              </span>
                     </a>
                 </div>
 
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" >
                         New Website
                     </a>
                 </div>
@@ -52,14 +52,14 @@
                     </a>
                 </div>
                 <div class="navbar-text pull-left">
-                    <a href="website-list.view.client.html" class="navbar-link active">
+                    <a class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
                     </a>
                 </div>
 
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" >
                         New Website
                     </a>
                 </div>
@@ -91,7 +91,7 @@
                     <li ng-repeat="website in model.websites" class="list-group-item">
                         <div class="row">
                             <div class="col-lg-4 col-xs-10">
-                                <a href="../../page/templates/page-list.view.client.html">{{website.name}}</a>
+                                <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
                             </div>
                             <div class="col-lg-3 visible-lg">
                                 {{website.created | date}}

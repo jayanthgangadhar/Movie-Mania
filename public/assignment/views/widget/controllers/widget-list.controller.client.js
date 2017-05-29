@@ -3,41 +3,46 @@
         .module("WAM")
         .controller('widgetListController', widgetListController);
     
-    function widgetListController($sce) {
+    function widgetListController($sce,$routeParams,widgetService) {
 
         var model = this;
-        var widgets = [
-            { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
-            { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-            { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-                "url": "http://lorempixel.com/400/200/"},
-            { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-            { "_id": "567", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-            { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-                "url": "https://youtu.be/AM2Ivdi9c4E" },
-            { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-        ];
+        model.userId = $routeParams.userId;
+        model.websiteId = $routeParams.websiteId;
+        model.pageId = $routeParams.pageId;
+        model.widgetId = $routeParams.widgetId;
 
-        model.widgets = widgets;
-        model.trust = trust;
-        model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-        model.widgetUrl = widgetUrl;
+        // model.trust = trust;
+        // model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
+        // model.widgetUrl = widgetUrl;
 
-        function widgetUrl(widget) {
-            var url = 'views/widget/templates/widget-' +widget.widgetType.toLowerCase() + '.view.client.html' ;
-            return url;
+        model.getYouTubeUrl= getYouTubeUrl;
+        model.getTrustedHtml= getTrustedHtml;
+        model.widgetTemplateUrl= widgetTemplateUrl;
+
+        model.widgets = widgetService.findWidgetByPageId(model.pageId);
+
+        function init() {
+            console.log(model.widgets);
+
+        }init();
+
+
+        function getTrustedHtml(text) {
+            return $sce.trustAsHtml(text);
 
         }
 
-        function getYouTubeEmbedUrl(linkUrl) {
-            var embedUrl = "https://www.youtube.com/embed/";
-            var linkUrlParts = linkUrl.split('/');
-            embedUrl += linkUrlParts[linkUrlParts.length - 1];
-            return $sce.trustAsResourceUrl(embedUrl);
+        function widgetTemplateUrl(widget) {
+            var Url = 'views/widget/templates/widget-' +widget+'.view.client.html';
+
+            return Url;
         }
 
-        function trust(html) {
-            return $sce.trustAsHtml(html);
+        function getYouTubeUrl(yurl) {
+            var urlParts = yurl.split("/");
+            var id= urlParts[urlParts.length - 1];
+            var url = "https://www.youtube.com/embed/"+id;
+            return $sce.trustAsResourceUrl(url);
         }
 
 
