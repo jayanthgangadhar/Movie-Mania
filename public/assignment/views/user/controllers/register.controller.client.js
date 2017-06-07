@@ -11,32 +11,35 @@
         model.register = register;
 
         function register(username, password, password2) {
-            if(typeof username === 'undefined')
-            {
+            if (typeof username === 'undefined') {
                 model.error = "Please enter the username";
                 return;
             }
 
-            if(password !== password2 || typeof password === 'undefined'){
+            if (password !== password2 || typeof password === 'undefined') {
                 model.error = "passwords do not match";
                 return;
             }
-            var found = userService.findUserByUsername(username);
-            if (found!== null){
-                model.error = "Sorry, that username is taken!";
-            }else{
-                var newUser = {
-                    username: username,
-                    password: password
-                };
-                newUser = userService.createUser(newUser);
-                $location.url('/user/'+ newUser._id);
-            }
+            userService.findUserByUsername(username)
+                .then(
+                    function () {
+                        model.error = "Sorry, that username is taken!";
+                    },
+                    function () {
+
+                        var newUser = {
+                            username: username,
+                            password: password
+                        };
+
+                        return userService
+                            .createUser(newUser);
+                    }
+                    )
+                .then(function (user) {
+                    $location.url('/user/' + user._id);
+                });
+
 
         }
-
-
-
-
-    }
-})();
+    }})();

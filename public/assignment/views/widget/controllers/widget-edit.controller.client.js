@@ -15,19 +15,30 @@
         model.updateWidget = updateWidget;
 
         function init() {
-            model.widget = widgetService.findWidgetById(model.widgetId);
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(function (widget) {
+                    model.widget = widget;
+                })
 
         }init();
 
         function deleteWidget() {
-            widgetService.deleteWidget(model.widgetId);
-            $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
-
+            widgetService
+                .deleteWidget(model.widgetId)
+                .then(function () {
+                    $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+                })
         }
 
-        function updateWidget() {
-            widgetService.updateWidget(model.widgetId, widget);
-            $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+        function updateWidget(widget) {
+            widgetService
+                .updateWidget(model.widgetId, widget)
+                .then(function() {
+
+                    $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+                })
+
 
         }
 

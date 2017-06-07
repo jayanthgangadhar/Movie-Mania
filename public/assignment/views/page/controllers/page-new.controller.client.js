@@ -12,21 +12,22 @@
         model.createPage  = createPage;
 
         function init() {
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+
+                })
         }init();
 
         function createPage(page) {
             page.websiteId = model.websiteId;
-            pageService.createPage(page);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            pageService
+                .createPage(page)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                })
         }
-
-
-
-
-
-
-
     }
 
 })();

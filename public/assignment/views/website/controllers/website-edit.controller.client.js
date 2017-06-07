@@ -12,22 +12,38 @@
         model.updateWebsite  = updateWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService
+                .findAllWebsitesForUser(model.userId)
+                .then(function (websites) {
+                    model.websites = websites;
+
+                }),
+            websiteService
+                .findWebsiteById(model.websiteId)
+                .then(function (website) {
+                    model.website = website;
+
+                })
 
         }init();
 
         function deleteWebsite() {
 
-            websiteService.deleteWebsite(model.websiteId);
-            $location.url('/user/' +model.userId+'/website');
-
+            websiteService
+                .deleteWebsite(model.websiteId)
+                .then(function () {
+                    $location.url('/user/' +model.userId+'/website');
+                })
         }
 
         function updateWebsite(website) {
 
-            var website = websiteService.updateWebsite(model.websiteId, website);
-            $location.url('/user/' +model.userId+'/website');
+            websiteService
+                .updateWebsite(model.websiteId, website)
+                .then(function () {
+                    $location.url('/user/' +model.userId+'/website');
+                })
+
 
         }
 

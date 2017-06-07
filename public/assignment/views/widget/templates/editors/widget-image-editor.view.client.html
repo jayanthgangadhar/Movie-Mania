@@ -8,7 +8,7 @@
         </div>
 
         <div class="navbar-text pull-left">
-            <a href="../../page/templates/page-list.view.client.html" class="navbar-link active">
+            <a class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
             </a>
@@ -50,22 +50,33 @@
         <input type="text" id="widgetWidth" ng-model="model.widget.width" class="form-control">
     </div>
 
-
     <div class="form-group">
-        <label for="widgetFile">Upload</label>
-        <input type="file" id="widgetFile" class="form-control" placeholder="No file chosen">
+        <form action="/api/upload" method="post" enctype="multipart/form-data">
+            <input  name="myFile"    type="file" class="form-control"/>
+            <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+            <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+            <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+            <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+            <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+            <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+        </form>
     </div>
 
+
     <div class="form-group">
-        <a class="btn btn-primary btn-block">Upload Image</a>
+        <a class="btn btn-info btn-block" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">Search</a>
     </div>
+
+
+
     <div class="form-group">
-        <a class="btn btn-info btn-block" ng-click="model.updateWidget(model.widget)">Update</a>
+        <a class="btn btn-info btn-block" ng-click="model.updateWidget(model.widget)">Save</a>
     </div>
+
     <div class="form-group ">
         <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
     </div>
-</div>
+
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom nav-widget">

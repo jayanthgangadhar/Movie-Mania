@@ -10,20 +10,20 @@
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.widgetId = $routeParams.widgetId;
-
-        // model.trust = trust;
-        // model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-        // model.widgetUrl = widgetUrl;
-
         model.getYouTubeUrl= getYouTubeUrl;
         model.getTrustedHtml= getTrustedHtml;
         model.widgetTemplateUrl= widgetTemplateUrl;
 
-        model.widgets = widgetService.findWidgetByPageId(model.pageId);
+        // model.widgets = widgetService.findWidgetByPageId(model.pageId);
 
         function init() {
-            console.log(model.widgets);
+            widgetService
+                .findAllWidgetsForPage(model.pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                    model.widgets.sort(function (a,b) {return (a.index > b.index)?1:((b.index>a.index)?-1:0);});
 
+                    })
         }init();
 
 
@@ -34,7 +34,6 @@
 
         function widgetTemplateUrl(widget) {
             var Url = 'views/widget/templates/widget-' +widget+'.view.client.html';
-
             return Url;
         }
 

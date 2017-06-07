@@ -29,16 +29,19 @@
 
 
 <div class="container-fluid " style="padding-bottom: 200px">
-    <div ng-repeat="widget in model.widgets">
-        <div class="wd-widget-toolbar ">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify pull-right"></span>
-        </div>
+    <div wd-sortable>
+     <div ng-repeat="widget in model.widgets"  id="{{widget._id}}">
 
 
-        <div ng-switch="widget.widgetType" >
+
+        <div ng-switch="widget.widgetType">
+            <div class="wd-widget-toolbar ">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify pull-right"></span>
+            </div>
+
             <div ng-switch-when="HEADING" >
                 <ng-include src=" 'views/widget/templates/widget-heading.view.client.html'"></ng-include>
             </div>
@@ -56,6 +59,7 @@
             </div>
         </div>
 
+        </div>
     </div>
 </div>
 
