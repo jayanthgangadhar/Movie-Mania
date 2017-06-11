@@ -20,25 +20,29 @@
                 model.error = "passwords do not match";
                 return;
             }
-            userService.findUserByUsername(username)
+            userService
+                .findUserByUsername(username)
                 .then(
-                    function () {
-                        model.error = "Sorry, that username is taken!";
-                    },
-                    function () {
+                    function(user) {
+                        if(user.length !== 0){
+                            model.error = "Sorry, that username is taken!";
+                        }
+                        else{
+                            var newUser = {
+                                username: username,
+                                password: password
+                            };
 
-                        var newUser = {
-                            username: username,
-                            password: password
-                        };
+                            userService
+                                .createUser(newUser)
+                                .then(function (user) {
+                                        $location.url('/user/' + user._id);
+                                    }
+                                )
 
-                        return userService
-                            .createUser(newUser);
-                    }
-                    )
-                .then(function (user) {
-                    $location.url('/user/' + user._id);
-                });
+                        }
+
+                    })
 
 
         }

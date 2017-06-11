@@ -12,4 +12,4 @@ require ("./test/app.js");
 
 require("./assignment_server/app");
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5000);
