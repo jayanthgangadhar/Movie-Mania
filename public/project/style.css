@@ -20,6 +20,8 @@
 .carousel-inner{
     /*border: 10px solid purple;*/
     height:70vh;
+    z-index: 0;
+    text-align: center;
 
 }
 .fill {
@@ -41,4 +43,13 @@
     background-repeat: no-repeat;
     background-position: center;
     background-image: url("http://moheban-ahlebeit.com/images/Hollywood-Movie-Wallpapers-Hd/Hollywood-Movie-Wallpapers-Hd-19.jpg");
+}
+
+#searchBar{
+    position: absolute;
+    top:85%;
+
+    margin: 0 auto;
+
+
 }
