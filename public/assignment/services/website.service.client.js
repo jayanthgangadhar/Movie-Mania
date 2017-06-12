@@ -10,8 +10,9 @@
         this.createWebsite = createWebsite;
         this.updateWebsite = updateWebsite;
 
-        function deleteWebsite(websiteId) {
-            var url = "/api/website/"+websiteId;
+        function deleteWebsite(websiteId,userId) {
+            var url = "/api/user/"+userId+"/website/"+websiteId;
+                // "/api/website/"+websiteId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;
@@ -46,13 +47,9 @@
                 });
         }
 
-
-
-
-
         function updateWebsite(websiteId , website) {
             var url = "/api/website/"+websiteId;
-            return $http.put(url,website)
+            return $http.put(url, website)
                 .then(function (response) {
                     return response.data;
                 })

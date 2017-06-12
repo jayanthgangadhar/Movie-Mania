@@ -30,16 +30,15 @@
         function deleteWebsite() {
 
             websiteService
-                .deleteWebsite(model.websiteId)
+                .deleteWebsite(model.websiteId,model.userId)
                 .then(function () {
                     $location.url('/user/' +model.userId+'/website');
                 })
         }
 
-        function updateWebsite(website) {
-
+        function updateWebsite(websiteId, website) {
             websiteService
-                .updateWebsite(model.websiteId, website)
+                .updateWebsite(model.websiteId, model.website)
                 .then(function () {
                     $location.url('/user/' +model.userId+'/website');
                 })
