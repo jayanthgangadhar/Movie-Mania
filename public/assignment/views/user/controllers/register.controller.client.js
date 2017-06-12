@@ -23,26 +23,24 @@
             userService
                 .findUserByUsername(username)
                 .then(
-                    function(user) {
-                        if(user.length !== 0){
-                            model.error = "Sorry, that username is taken!";
-                        }
-                        else{
-                            var newUser = {
-                                username: username,
-                                password: password
-                            };
-
-                            userService
-                                .createUser(newUser)
-                                .then(function (user) {
-                                        $location.url('/user/' + user._id);
-                                    }
-                                )
-
-                        }
-
+                    function() {
+                        model.error = "Sorry, that username is taken!";
+                    },
+                    function () {
+                        var newUser = {
+                            username: username,
+                            password: password
+                        };
+                        return userService
+                            .createUser(newUser);
                     })
+                .then(function (user) {
+                    $location.url('/user/' + user._id);
+                });
+
+
+
+
 
 
         }

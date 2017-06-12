@@ -35,12 +35,12 @@
                 .updateUser(user._id, user )
                 .then(function () {
                     model.message = "User Updated"
-
-                })
-                .then(function () {
+                },function () {
                     model.error = "User cannot be Unregistered"
 
+
                 })
+
             
         }
 

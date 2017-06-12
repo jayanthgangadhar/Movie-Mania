@@ -7,7 +7,7 @@ if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
     connectionString = 'mongodb://' + username + ':' + password;
     connectionString += '@ds139781.mlab.com:39781/heroku_fcxk1trj'; // user yours
 }
-
+mongoose.connect(connectionString);
 mongoose.Promise = require('q').Promise;
 require('./services/user.service.server');
 require('./services/website.service.server');

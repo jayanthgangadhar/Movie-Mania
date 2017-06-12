@@ -4,6 +4,7 @@ app.get("/api/website/:websiteId",findWebsiteById);
 app.post("/api/user/:userId/website",createWebsite);
 app.put("/api/website/:websiteId",updateWebsite);
 app.delete("/api/website/:websiteId",deleteWebsite);
+var websiteModel = require('../models/website/website.model.server');
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -58,9 +59,15 @@ function findAllWebsitesForUser(req,res) {
 
 function createWebsite(req,res) {
     var website = req.body;
-    website._id = (new Date()).getTime() + "";
-    websites.push(website);
-    res.json(website);
+    var userId = req.params.userId;
+    websiteModel
+        .createWebsiteForUser(userId,website)
+        .then(function (website) {
+            console.log(website);
+            res.json(website);
+        });
+    // websites.push(website);
+    // res.json(website);
 }
 
 

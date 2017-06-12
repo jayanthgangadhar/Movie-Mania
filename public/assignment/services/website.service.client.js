@@ -38,13 +38,12 @@
                 })
         }
 
-        function createWebsite(website) {
-            var userId = website.developerId;
+        function createWebsite(userId,website) {
             var url = "/api/user/"+userId+"/website";
             return $http.post(url, website)
                 .then(function (response) {
                     return response.data;
-                })
+                });
         }
 
 
