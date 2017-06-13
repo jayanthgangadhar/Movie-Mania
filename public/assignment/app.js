@@ -1,5 +1,5 @@
 (function () {
     angular
-        .module("WAM", ["ngRoute","wdDirectives"]);
+        .module("WAM", ["ngRoute","wdDirectives","textAngular"]);
 
 })();

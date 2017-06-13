@@ -9,6 +9,31 @@
         this.createWidget = createWidget;
         this.findWidgetById = findWidgetById;
         this.updateWidget = updateWidget;
+        this.createWidgetText=createWidgetText;
+        this.createWidgetHtml=createWidgetHtml;
+
+        function createWidgetText(pageId, widget1) {
+            // console.log("hello");
+            url="/api/page/"+pageId+"/widget";
+            widget1 = {"widgetType": "TEXT"};
+            widget1.pageId = pageId;
+            return $http.post(url,widget1)
+                .then(function (response) {
+                    return response.data;
+                });
+
+        }
+
+        function createWidgetHtml(pageId, widget1) {
+            url="/api/page/"+pageId+"/widget";
+            widget1 = {"widgetType": "HTML"};
+            widget1.pageId = pageId;
+            return $http.post(url,widget1)
+                .then(function (response) {
+                    return response.data;
+                });
+
+        }
 
         function deleteWidget(widgetId,pageId) {
             var url = "/api/page/"+pageId+"/widget/"+widgetId;
