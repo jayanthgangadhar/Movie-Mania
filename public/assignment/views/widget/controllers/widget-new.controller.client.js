@@ -49,15 +49,15 @@
 
         function createHtmlWidget(widget){
             widgetService.createWidgetHtml(model.pageId,widget)
-                .then(function (Id) {
-                    $location.url('/user/'+model.userId+'/websites/'+model.websiteId+'/pages/'+model.pageId+'/widget/'+Id);
+                .then(function (widget) {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
                 });
         }
 
         function createTextWidget(widget) {
             widgetService.createWidgetText(model.pageId, widget)
-                .then(function (Id) {
-                    $location.url('/user/' + model.userId + '/websites/' + model.websiteId + '/pages/' + model.pageId + '/widget/' + Id);
+                .then(function (widget) {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
                 });
         }
 
