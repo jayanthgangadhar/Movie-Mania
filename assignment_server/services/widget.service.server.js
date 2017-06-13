@@ -87,6 +87,15 @@ function updateWidget(req,res) {
 
                         });
                     break;
+                case "HTML":
+                    found.text = widget.text;
+                    widgetModel
+                        .updateWidget(widgetId,found)
+                        .then(function (widget) {
+                            res.json(widget);
+
+                        });
+                    break;
                 default:
                     res.sendStatus(400);
                     break;
