@@ -25,7 +25,7 @@
 
         function deleteWidget() {
             widgetService
-                .deleteWidget(model.widgetId)
+                .deleteWidget(model.widgetId,model.pageId)
                 .then(function () {
                     $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
                 })
@@ -33,9 +33,8 @@
 
         function updateWidget(widget) {
             widgetService
-                .updateWidget(model.widgetId, widget)
+                .updateWidget(model.widgetId, widget, model.pageId)
                 .then(function() {
-
                     $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
                 })
 

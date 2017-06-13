@@ -29,12 +29,20 @@
 
     <div class="form-group">
         <label for="wid-name">Name</label>
-        <input type="text" id="wid-name" class="form-control" placeholder="Name">
+        <input type="text"
+               ng-model="model.widget.name"
+               id="wid-name"
+               class="form-control"
+               placeholder="Name">
     </div>
 
     <div class="form-group">
         <label for="widgetText">Text</label>
-        <input type="text" id="widgetText" class="form-control" placeholder="Text">
+        <input type="text"
+               ng-model="model.widget.text"
+               id="widgetText"
+               class="form-control"
+               placeholder="Text">
     </div>
 
     <div class="form-group">

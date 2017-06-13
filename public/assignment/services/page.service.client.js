@@ -10,8 +10,8 @@
         this.createPage = createPage;
         this.updatePage = updatePage;
 
-        function deletePage(pageId) {
-            var url = "/api/page/"+pageId;
+        function deletePage(pageId,websiteId) {
+            var url = "/api/website/"+websiteId+"/page/"+pageId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;
@@ -23,6 +23,7 @@
             var url = "/api/website/"+websiteId+"/page";
             return $http.get(url)
                 .then(function (response) {
+                    // console.log(response.data);
                     return response.data;
                 })
         }

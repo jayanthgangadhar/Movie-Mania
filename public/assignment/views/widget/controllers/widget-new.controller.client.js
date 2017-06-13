@@ -17,7 +17,7 @@
 
 
         function addYoutubeWidget() {
-            var newYoutubeVideo = { "_id": "", "widgetType": "YOUTUBE", "pageId": "", "size": "", "text": "", "name": ""};
+            var newYoutubeVideo = {"widgetType": "YOUTUBE"};
             widgetService
                 .createWidget(model.pageId, newYoutubeVideo)
                 .then(function (widget) {
@@ -27,7 +27,7 @@
 
 
         function addImageWidget() {
-            var newImage = { "_id": "", "widgetType": "IMAGE", "pageId": "", "width": "100%", "text": "", "name": ""};
+            var newImage = {"widgetType": "IMAGE"};
             widgetService
                 .createWidget(model.pageId, newImage)
                 .then(function (widget) {
@@ -37,7 +37,7 @@
 
 
         function addHeaderWidget() {
-            var widget = { "_id": "", "widgetType": "HEADING", "pageId": "", "size": "", "text": "", "name": ""};
+            var widget = {"widgetType": "HEADING"};
             widgetService
                 .createWidget(model.pageId, widget)
                 .then(function (widget) {
