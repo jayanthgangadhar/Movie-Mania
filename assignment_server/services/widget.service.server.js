@@ -75,8 +75,20 @@ function updateWidget(req,res) {
 
                         });
                     break;
+                case "TEXT":
+                    found.text = widget.text;
+                    found.rows = widget.rows;
+                    found.placeholder = widget.placeholder;
+                    found.formatted = widget.formatted;
+                    widgetModel
+                        .updateWidget(widgetId,found)
+                        .then(function (widget) {
+                            res.json(widget);
+
+                        });
+                    break;
                 default:
-                    res.json(400);
+                    res.sendStatus(400);
                     break;
             }
 
