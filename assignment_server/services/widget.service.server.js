@@ -14,7 +14,7 @@ function deleteWidget(req,res) {
     var widgetId = req.params.widgetId;
     var pageId = req.params.pageId;
     widgetModel
-        .deleteWidget(widgetId)
+        .deleteWidget(widgetId,pageId)
         .then(function () {
             res.sendStatus(200);
             
@@ -43,7 +43,7 @@ function updateWidget(req,res) {
                     widgetModel
                         .updateWidget(widgetId,found)
                         .then(function (widget) {
-                            console.log(widget);
+                            // console.log(widget);
                             res.json(widget);
                         },
                         function (error) {
@@ -67,7 +67,7 @@ function updateWidget(req,res) {
                     found.width = widget.width;
                     found.name = widget.name;
                     found.text= widget.text;
-                    console.log(found);
+                    // console.log(found);
                     widgetModel
                         .updateWidget(widgetId ,found)
                         .then(function (widget) {
