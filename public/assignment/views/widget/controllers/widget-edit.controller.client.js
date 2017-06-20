@@ -27,7 +27,7 @@
             widgetService
                 .deleteWidget(model.widgetId,model.pageId)
                 .then(function () {
-                    $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+                    $location.url("/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
                 })
         }
 
@@ -35,7 +35,7 @@
             widgetService
                 .updateWidget(model.widgetId, widget, model.pageId)
                 .then(function() {
-                    $location.url("/user/" +model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+                    $location.url("/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
                 })
 
 

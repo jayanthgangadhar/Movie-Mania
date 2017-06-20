@@ -3,7 +3,7 @@
         .module("project")
         .controller("homeController", homeController);
 
-    function homeController($scope) {
+    function homeController($http) {
         var model = this;
         // console.log('hello world');
         // $scope.searchPhotos = searchPhotos;
@@ -13,7 +13,13 @@
         //
         //
         function search(text) {
-            console.log(text);
+            var url = "http://www.omdbapi.com/?apikey=fc9b6f7b&s="+text;
+            $http.get(url)
+                .then(renderMovies)
+        }
+        
+        function renderMovies(response) {
+            model.movies = response.data.Search;
         }
     }
 

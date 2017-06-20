@@ -25,7 +25,7 @@
 
 }
 .fill {
-    border: 10px solid black;
+    /*border: 10px solid black;*/
     height: inherit;
     overflow: hidden;
     background-size: 100% 100%;
@@ -35,7 +35,7 @@
     background-image: url("http://cdn2us.denofgeek.com/sites/denofgeekus/files/2016/07/justice-league.jpg");
 }
 .fill2 {
-    border: 10px solid black;
+    /*border: 10px solid black;*/
     height: inherit;
     overflow: hidden;
     background-size: 100% 100%;
@@ -53,4 +53,12 @@
     margin: 0 auto;
 
 
+}
+
+.movieDisplay{
+    padding: 10px 0 10px 0;
+}
+
+.movies{
+    
 }

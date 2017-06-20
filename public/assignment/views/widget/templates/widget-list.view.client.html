@@ -3,14 +3,14 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link active">
+            <a href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link active">
                      <span class="glyphicon glyphicon-plus">
                      </span>
             </a>
         </div>
 
         <div class="navbar-text pull-left">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link active">
+            <a href="#!/website/{{model.websiteId}}/page" class="navbar-link active">
                      <span class="glyphicon glyphicon-chevron-left">
                      </span>
             </a>
@@ -36,7 +36,7 @@
 
         <div ng-switch="widget.widgetType">
             <div class="wd-widget-toolbar ">
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                <a href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
                 <span class="glyphicon glyphicon-align-justify pull-right"></span>

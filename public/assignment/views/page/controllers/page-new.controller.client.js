@@ -3,10 +3,10 @@
         .module("WAM")
         .controller('pageNewController', pageNewController)
 
-    function pageNewController($location, $routeParams, pageService) {
+    function pageNewController($location, $routeParams, pageService, currentUser) {
 
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.createPage  = createPage;
@@ -25,7 +25,7 @@
             pageService
                 .createPage(page)
                 .then(function () {
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                    $location.url('/website/' + model.websiteId + '/page');
                 })
         }
     }

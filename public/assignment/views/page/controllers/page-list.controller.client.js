@@ -3,11 +3,11 @@
         .module("WAM")
         .controller('pageListController',pageListController);
 
-    function pageListController($routeParams, pageService) {
+    function pageListController($routeParams, pageService, currentUser) {
 
         var model = this;
         model.websiteId = $routeParams.websiteId;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
 
         function init() {
             pageService

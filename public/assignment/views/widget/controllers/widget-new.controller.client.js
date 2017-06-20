@@ -23,7 +23,7 @@
             widgetService
                 .createWidget(model.pageId, newYoutubeVideo)
                 .then(function (widget) {
-                    $location.url("/user/"+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widget._id);
+                    $location.url("/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widget._id);
                 })
         }
 
@@ -33,7 +33,7 @@
             widgetService
                 .createWidget(model.pageId, newImage)
                 .then(function (widget) {
-                    $location.url("/user/"+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widget._id);
+                    $location.url("/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widget._id);
                 })
         }
 
@@ -43,21 +43,21 @@
             widgetService
                 .createWidget(model.pageId, widget)
                 .then(function (widget) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
+                    $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
                 })
         }
 
         function createHtmlWidget(widget){
             widgetService.createWidgetHtml(model.pageId,widget)
                 .then(function (widget) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
+                    $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
                 });
         }
 
         function createTextWidget(widget) {
             widgetService.createWidgetText(model.pageId, widget)
                 .then(function (widget) {
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
+                    $location.url('/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
                 });
         }
 

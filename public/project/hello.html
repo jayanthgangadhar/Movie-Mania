@@ -1,14 +1,7 @@
+<div class="container-fluid">
 <div id="carousel-example-generic" ng-controller="homeController" class="carousel slide" data-ride="carousel">
 
-    <div class="input-group container-fluid" id="searchBar" >
-        <input ng-model="searchText" type="text" class="form-control" placeholder="Search for movie by title">
 
-        <span class="input-group-btn">
-            <a ng-click="model.search(searchText)" class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-search"></span>
-            </a>
-        </span>
-    </div>
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -16,21 +9,8 @@
         <!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
     </ol>
 
-
-
-    <!--<div class="input-group">-->
-    <!--<input  type="text" class="form-control">-->
-    <!--&lt;!&ndash;ng-model="searchText"&ndash;&gt;-->
-    <!--<span class="input-group-btn">-->
-    <!--<a  class="btn btn-default" type="button" id="searchBar">-->
-    <!--&lt;!&ndash;ng-click="model.searchPhotos(searchText)"&ndash;&gt;-->
-    <!--<span class="glyphicon glyphicon-search"></span>-->
-    <!--</a>-->
-    <!--</span>-->
-    <!--</div>-->
-
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+    <div class="carousel-inner " role="listbox">
         <div class="item active" >
             <div class="fill">
                 <div class="carousel-caption">
@@ -43,10 +23,18 @@
             </div>
 
         </div>
+        <form method = post>
+            <div class="input-group container-fluid" id="searchBar" >
+                <input ng-model="searchText" type="text" class="form-control" placeholder="Search for movie by title">
 
+                <span class="input-group-btn">
+            <button ng-click="model.search(searchText)" class="btn btn-default" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+            </div>
 
-
-
+        </form>
 
         <!-- Controls -->
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -58,4 +46,15 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
+    <div class="movieDisplay row" >
+        <div class="movies col-xs-4" ng-repeat="movie in model.movies">
+            <img ng-click="model.selectPhoto(photo)"
+                 class="image container-fluid"
+                 id="searchImage"
+                 ng-src="{{movie.Poster}}"/>
+        </div>
+    </div>
+
+</div>
 </div>

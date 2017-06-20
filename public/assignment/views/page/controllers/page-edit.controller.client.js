@@ -3,12 +3,12 @@
         .module("WAM")
         .controller('pageEditController', pageEditController);
 
-    function pageEditController($location, $routeParams, pageService) {
+    function pageEditController($location, $routeParams, pageService, currentUser) {
 
         var model = this;
         model.websiteId = $routeParams.websiteId;
         model.pageId= $routeParams.pageId;
-        model.userId= $routeParams.userId;
+        model.userId= currentUser._id;
         model.deletePage  = deletePage;
         model.updatePage = updatePage;
 
@@ -32,7 +32,7 @@
             pageService
                 .deletePage(model.pageId,model.websiteId)
                 .then(function () {
-                    $location.url('/user/' +model.userId+'/website/' + model.websiteId +'/page');
+                    $location.url('/website/' + model.websiteId +'/page');
 
                 })
 
@@ -43,7 +43,7 @@
             pageService
                 .updatePage(model.pageId, page)
                 .then(function () {
-                    $location.url('/user/' +model.userId+'/website/' + model.websiteId +'/page');
+                    $location.url('/website/' + model.websiteId +'/page');
                 })
 
         }
