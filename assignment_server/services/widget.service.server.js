@@ -162,7 +162,7 @@ function createWidget(req,res) {
                 widget.url = '/assignment/uploads/'+filename;
                 widgetModel.updateWidget(widgetId,widget)
                     .then(function () {
-                        var callbackUrl= "website/"+websiteId+"/page/"+pageId+"/widget";
+                        var callbackUrl= "/assignment/#!/website/"+websiteId+"/page/"+pageId+"/widget";
                         res.redirect(callbackUrl);
 
                     });
