@@ -2,6 +2,7 @@ var app = require('../../express');
 var userModel = require('../models/user/user.model.server');
 var passport = require("passport");
 
+var bcrypt = require("bcrypt-nodejs");
 var LocalStrategy = require("passport-local").Strategy;
 passport.use(new LocalStrategy(localStrategy));
 
@@ -77,6 +78,7 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 function register(req,res) {
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
     userModel
         .createUser(user)
         .then(function (user) {
