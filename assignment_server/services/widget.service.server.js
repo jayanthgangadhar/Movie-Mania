@@ -163,7 +163,7 @@ function createWidget(req,res) {
                 widgetModel.updateWidget(widgetId,widget)
                     .then(function () {
 
-                        var callbackUrl= "website/"+websiteId+"/page/"+pageId+"/widget";
+                        var callbackUrl= "/page/"+pageId+"/widget";
                         res.redirect(callbackUrl);
 
                     });
