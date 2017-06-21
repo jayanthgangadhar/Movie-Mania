@@ -7,13 +7,20 @@ userModel.findUserById = findUserById;
 userModel.findAllUsers = findAllUsers;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
+userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
 
 
+
 module.exports = userModel;
+
+function findUserByGoogleId(googleId) {
+    return userModel
+        .findOne({"google.id": googleId});
+}
 
 function addWebsite(websiteId,userId) {
     return userModel

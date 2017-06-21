@@ -15,16 +15,19 @@
                 .then(function (found) {
                     if (found!== null){
                                 $location.url('/profile');
-                            }else{
+                            }
+                            else{
 
                                 model.message = "Sorry, " + username + " not found.Please try again!"
                             }
+                },function (){
+                    model.message = "Sorry, " + username + " not found.Please try again!"
                 })
                 // .then(function () {
                 //
                 //
                 // })
-            model.message = "Sorry, " + username + " not found.Please try again!"
+            // model.message = "Sorry, " + username + " not found.Please try again!"
 
 
 
