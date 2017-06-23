@@ -5,6 +5,7 @@
 
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
     <script src="config.js"></script>
     <meta charset="utf-8">
@@ -12,12 +13,19 @@
     <link href="../project/style.css" rel="stylesheet">
     <link href="../assignment/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!--HOME-->
-    <script src="../project/controller/home.controller.client.js"></script>
+    <!--USER-->
+    <script src="../project/views/user/controllers/home.controller.client.js"></script>
+    <script src="../project/views/user/controllers/login.controller.client.js"></script>
+    <script src="../project/views/user/controllers/profile.controller.client.js"></script>
+    <script src="../project/views/user/controllers/message.controller.client.js"></script>
+    <script src="../project/views/user/controllers/register.controller.client.js"></script>
 
+
+    <!--MOVIE-->
+    <script src="views/movie/controllers/movie.controller.client.js"></script>
+    <script src="../project/service/home.service.client.js"></script>
 </head>
 <body>
 <div ng-view></div>

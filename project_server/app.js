@@ -1,0 +1,1 @@
+require('./services/home.service.server');

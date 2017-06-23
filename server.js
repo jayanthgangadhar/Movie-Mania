@@ -22,6 +22,7 @@ app.use(app.express.static(__dirname + '/public'));
 require("./public/session/app")
 
 require("./assignment_server/app");
+require("./project_server/app");
 
 // require("./public/project/app")
 

@@ -3,6 +3,7 @@
         .module("WAM")
         .factory('userService', userService);
     function userService($http) {
+
         // var users =[
         //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
         //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },

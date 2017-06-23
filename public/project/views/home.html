@@ -49,12 +49,35 @@
 
     <div class="movieDisplay row" >
         <div class="movies col-xs-4" ng-repeat="movie in model.movies">
-            <img ng-click="model.selectPhoto(photo)"
-                 class="image container-fluid"
-                 id="searchImage"
-                 ng-src="{{movie.Poster}}"/>
+            <a ng-click="model.selectedMovie(movie.imdbID)">
+                <img class="image container-fluid"
+                     id="searchImage"
+                     ng-src="{{movie.Poster}}"/>
+            </a>
         </div>
     </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#!/">Home</a>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#!/user/login">Login</a></li>
+                        <li><a href="#!/user/register">Register</a></li>
+                        <li><a href="#!/user/profile">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
 </div>
 </div>
