@@ -1,112 +1,139 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
 
-<div class="container-fluid" xmlns:background="http://www.w3.org/1999/xhtml">
-    <div class="panel">
-        <div class="panel-heading" >
-            <div style="background: rgba(10,10,10,0.76)">
-                <div class="col-sm-6" >
-                    <img style="margin-top: 15px" ng-src={{model.movie.Poster}} height="500px" width="100%">
-                </div>
-                <div class="col-sm-6">
-                    <div style="margin-top: 15px" class="panel panel-info">
-                        <div class="panel-heading">
-                            <h1>{{model.movie.Title}}</h1>
-                        </div>
-                        <div class="panel-body">
-                            <h4>Genre:</h4>
-                            {{model.movie.Genre}}
-                            <!--<div class="star-ratings-css">-->
-                                <!--<div class="star-ratings-css-top " style="width: 30%">-->
-                                    <!--<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>-->
-                                <!--<div class="star-ratings-css-bottom">-->
-                                    <!--<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>-->
-                            <!--</div>-->
-                            <div class="cost pull-right">
-                                <h4><b> Ratings</b> </h4>
-                                Average<br/>
-                                $150 for two people.
-                            </div>
-                            <div class="prange">
-                                <h4>Released:</h4>
-                                <div class="star-ratings-css">
-                                    <div class="star-ratings-css-top" style="width: 30%">
-                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                    <div class="star-ratings-css-bottom">
-                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                </div>
-                            </div>
-                            <div class="addr">
-                                <h4><b>Address:</b><br/></h4>
-                                sdfghfdsfg
-                            </div>
-                            <div class="marks">
-                                <div>
-                                    <div >
-                                        <h4 > <span class="glyphicon glyphicon-ok icon-success"></span>
-                                            Delivery </h4>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <h4 > <span class="glyphicon glyphicon-ok icon-success"></span>
-                                            Reservation </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            </button>
+            <a class="navbar-brand" href="#!/">Movie</a>
+        </div>
+        <div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/user/profile">{{model.user.username}}</a></li>
+                    <li><a ng-click="model.logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-sm-8 bottomBody">
+        <div class="moviePoster image img-responsive">
+            <img id="poster" ng-src="{{model.generateUrl(model.movie.poster_path)}}" class="demo">
+        </div>
+        <div class="panel-body" id="movieBody">
+            <div >
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="pill" href="movie.view.client.html#plot">Plot</a></li>
+                    <li><a data-toggle="tab" href="movie.view.client.html#cast">Cast</a></li>
+                    <li><a data-toggle="tab" href="movie.view.client.html#criticreviews">Critic Reviews</a></li>
+                    <li><a data-toggle="tab" href="movie.view.client.html#userreviews">User Reviews</a></li>
+                </ul>
 
+                <div class="tab-content">
+                    <div id="plot" class="tab-pane fade in active">
+                        <br>
+                        <p>{{model.movie.overview}}</p>
+                    </div>
+                    <div id="cast" class="tab-pane fade">
+                        <br>
+                        <li ng-repeat="actor in model.cast|limitTo:10">
+                            {{actor.character}}
+                        </li>
+                    </div>
+                    <div id="criticreviews" class="tab-pane fade">
+                        <br>
+                        <p>Some content in menu 2.</p>
+                    </div>
+                    <div id="userreviews"  class="tab-pane fade">
+                        <br>
+                        <div ng-repeat="review in model.reviews" class="panel-footer" >
+                            <div class="row" >
+                                <div class="col-sm-2"  >
+                                    <!--style="width: 10%; padding-right: 70px"-->
+                                    <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" height="80px" width="80px">
+                                </div>
+                                <div class="col-sm-10 pull-left">
+                                    <div >{{review.title}}</div>
+                                    <div> BY <a href="#!/user/profile/{{review._user}}"> {{review.user_name}} </a></div>
+                                    <div ><h3>{{review.description}}</h3></div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!--<li><b>{{review.title}}</b></li>-->
+                        <!--<li>{{review.description}}</li>-->
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="panel-body">
-            <div >
-                <h3>Tabs</h3>
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Cast</a></li>
-                    <li><a href="#">User Reviews</a></li>
-                    <li><a href="#">Critic Reviews</a></li>
-                </ul>
-                <br>
-                <p>{{model.movie.Plot}}</p>
-            </div>
+        <div class="panel-heading">
+            <h1>{{model.movie.original_title}}</h1>
         </div>
         <div class="panel-footer">
-            <h3>Trailers:</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="vendor/images/widget-img.jpg" target="_blank">
-                            <img src="vendor/images/widget-img.jpg" alt="Lights" style="width:100%">
-                            <div class="caption">
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </a>
+            <div class="panel-body" >
+                <h4><b>Genre: </b></h4>
+                <li ng-repeat="genre in model.movie.genres" >
+                 {{genre.name}}
+                </li>
+                <div class="runtime">
+                    <h4><b>Runtime:</b><br/></h4>
+                    {{model.movie.runtime}} mins
+                </div>
+                <div class="ratings">
+                    <h4><b>Ratings:</b></h4>
+                    <div>
+                        <span id="star">☆</span>
+                        {{model.movie.vote_average}}
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="vendor/images/widget-img.jpg" target="_blank">
-                            <img src="vendor/images/widget-img.jpg" alt="Nature" style="width:100%">
-                            <div class="caption">
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </a>
-                    </div>
+                <div class="released">
+                    <h4><b>Released:</b><br/></h4>
+                    {{model.movie.release_date}}
                 </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="vendor/images/widget-img.jpg" target="_blank">
-                            <img src="vendor/images/widget-img.jpg" alt="Fjords" style="width:100%">
-                            <div class="caption">
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                            </div>
-                        </a>
-                    </div>
+                <div class="language">
+                    <h4><b>Languages:</b><br/></h4>
+                    <li ng-repeat="language in model.movie.spoken_languages" >
+                        {{language.name}}
+                    </li>
                 </div>
+
+            </div>
+        </div>
+        <div id="review">
+            <div class="panel-footer container-fluid">
+                <h4><b>Write a Review:</b></h4>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Please enter title of the review" ng-model="model.review.title">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Please enter the review" ng-model="model.review.description"></textarea>
+                </div>
+                <a class="btn btn-success"  ng-click="model.submit(model.review)">Submit</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-4" ng-show="model.urls.length > 0">
+        <div class="panel container-fluid movieDetail">
+            <div class="panel-body trailer ">
+                <h4><b>Trailers:</b></h4>
+                <iframe ng-repeat="url in model.urls" id="trailer" width="100%" height="200px" frameborder="0" src="{{url}}" allowfullscreen ></iframe>
+            </div>
+        </div>
+        <div class="panel container-fluid movieDetail">
+            <div class="panel-body trailer ">
+                <h4><b>Now Playing:</b></h4>
+                <iframe ng-repeat="nowUrl in model.nowUrls" id="nowTrailer" width="100%" height="200px" frameborder="0" src="{{nowUrl}}" allowfullscreen ></iframe>
             </div>
         </div>
     </div>
 </div>
 </div>
+
+

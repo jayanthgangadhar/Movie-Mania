@@ -19,9 +19,9 @@ app.use(passport.session());
 app.use(app.express.static(__dirname + '/public'));
 // app.use(morgan('dev'));
 
-require("./public/session/app")
-
-require("./assignment_server/app");
+require("./public/session/app");
+//
+// require("./assignment_server/app");
 require("./project_server/app");
 
 // require("./public/project/app")

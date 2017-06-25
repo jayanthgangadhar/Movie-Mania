@@ -14,7 +14,7 @@
                 .login(username, password)
                 .then(function (found) {
                     if (found!== null){
-                        $location.url('/profile');
+                        $location.url('/user/profile');
                     }
                     else{
 

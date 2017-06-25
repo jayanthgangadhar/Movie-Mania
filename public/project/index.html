@@ -2,7 +2,7 @@
 <html lang="en" ng-app="project">
 <head>
     <title>Project</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,13 +19,23 @@
     <script src="../project/views/user/controllers/home.controller.client.js"></script>
     <script src="../project/views/user/controllers/login.controller.client.js"></script>
     <script src="../project/views/user/controllers/profile.controller.client.js"></script>
+    <script src="../project/views/user/controllers/profileView.controller.client.js"></script>
     <script src="../project/views/user/controllers/message.controller.client.js"></script>
     <script src="../project/views/user/controllers/register.controller.client.js"></script>
+    <script src="../project/views/review/controllers/review.controller.client.js"></script>
+    <script src="../project/service/user.service.client.js"></script>
 
 
     <!--MOVIE-->
     <script src="views/movie/controllers/movie.controller.client.js"></script>
     <script src="../project/service/home.service.client.js"></script>
+
+    <!--REVIEW-->
+    <script src="../project/service/review.service.client.js"></script>
+    <script src="../project/service/message.service.client.js"></script>
+
+    <script src="../project/service/following.service.client.js"></script>
+
 </head>
 <body>
 <div ng-view></div>
