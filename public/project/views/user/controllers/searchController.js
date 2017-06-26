@@ -8,8 +8,12 @@
         model.search = search;
         model.selectedMovie = selectedMovie;
         model.login = login;
+        model.logout = logout;
         model.register = register;
         model.generateUrl = generateUrl;
+        model.user = currentUser;
+        model.checkEmpty = checkEmpty;
+        // console.log(typeof (model.user));
 
         function init() {
             model.popularMovies = [];
@@ -26,6 +30,20 @@
                 })
 
         }init();
+
+        function checkEmpty(obj) {
+            for (var x in obj) { return false; }
+            return true;
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url("/")
+                })
+
+        }
 
         function register(user) {
             // console.log(user);

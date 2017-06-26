@@ -7,18 +7,109 @@
                 <span class="icon-bar"></span>
 
             </button>
-            <a class="navbar-brand" href="#!/">Movie</a>
+            <a class="navbar-brand" href="#!/user/search">Movie</a>
         </div>
         <div>
-            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar" >
                 <ul class="nav navbar-nav">
-                    <li><a href="#!/user/profile">{{model.user.username}}</a></li>
-                    <li><a ng-if="currentUser" ng-click="model.logout()">Logout</a></li>
+                    <li><a ng-hide="model.checkEmpty(model.user)" href="#!/user/profile" >{{model.demo.username}}</a></li>
+                    <li><a ng-hide="model.checkEmpty(model.user)" ng-click="model.logout()">Logout</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="checkNavbar" >
+                <ul class="nav navbar-nav">
+                    <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#myModal" >Login</a></li>
+                    <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#regModal">Register</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
+
+<div class="modal fade bs-example-modal-sm" data-backdrop="false"
+     id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content mdlc">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="model.eraseData()"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" >&times;</span></button>
+                <h2 class="modal-title">Welcome </h2>
+                <div class="alert alert-dismissable alert-danger" ng-show="model.xerror">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{model.xerror}}
+                </div>
+            </div>
+            <div class="modal-body container-fluid">
+                <div class="form-group">
+                    <input type="text" ng-model="model.user.username"
+                           class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control"
+                           ng-model="model.user.password" placeholder="Password">
+                </div>
+                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
+                <a href="/api/auth/facebook" class="btn btn-primary btn-block">
+                    <span class="fa fa-facebook"></span>
+                    Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" data-backdrop="false"
+     id="regModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content mdlc">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        ng-click="model.eraseData()" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title mdlt" id="regModalLabel">Not a member yet?</h3>
+                <div class="alert alert-dismissable alert-danger" ng-show="model.uerror">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{model.uerror}}
+                </div>
+            </div>
+            <div class="modal-body container-fluid">
+                <form name="form1">
+                    <div class="form-group">
+                        <input type="text" ng-model="model.user.username" name="username"
+                               class="form-control" placeholder="Username"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="model.user.firstname"
+                               class="form-control" placeholder="Firstname" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="model.user.lastname"
+                               class="form-control" placeholder="Lastname" >
+                    </div>
+                    <div class="form-group">
+                        <input type="email" ng-model="model.user.email"
+                               class="form-control" placeholder="Email" >
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" ng-model="model.user.phone"
+                               class="form-control" placeholder="Phone number" >
+                    </div>
+                    <div class="form-group">
+                        <input type="password" ng-model="model.user.password" name="Password"
+                               class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" ng-model="model.user.password2" name="CPassword"
+                               class="form-control" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block" ng-click="model.register(model.user)">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
 <div class="row">
     <div class="col-sm-8 bottomBody">

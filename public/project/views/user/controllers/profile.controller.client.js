@@ -10,6 +10,7 @@
         model.logout = logout;
         model.user = currentUser;
         model.search = search;
+        model.admin = "ADMIN";
         model.selectedMovie = selectedMovie;
         model.generateUrl = generateUrl;
         model.followingUsers = [];

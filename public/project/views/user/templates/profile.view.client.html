@@ -16,6 +16,8 @@
                     <li><a href="#!/user/following" class="visible-xs">Following</a></li>
                     <li><a href="#!/user/followers" class="visible-xs">Followers</a></li>
                     <li><a href="#!/user/reviews" class="visible-xs">Reviews</a></li>
+                    <li><a href="#!/user/reviews" class="visible-xs">Reviews</a></li>
+                    <li><a ng-if="model.user.role == model.admin" href="#!/user/admin" class="visible-xs">admin</a></li>
                     <li><a ng-click="model.logout()">Logout</a></li>
                 </ul>
             </div>
@@ -38,6 +40,7 @@
                         <li><a href="#!/user/following">Following</a></li>
                         <li><a href="#!/user/followers">Followers</a></li>
                         <li><a href="#!/user/reviews">Reviews</a></li>
+                        <li><a ng-if="model.user.role == model.admin" href="#!/user/admin">admin</a></li>
                     </ul>
                 </div>
             </ul>
@@ -47,8 +50,8 @@
                <div class="panel panel-default">
                    <div class="panel-heading">
                     <div class="container-fluid">Profile
-                        <a class="btn btn-success pull-right"  ng-click="model.followUser()" >UnFollow</a>
-                        <!--<a class="btn btn-success pull-right" ng-click="model.unFollow()" >Unfollow</a>-->
+                        <a class="btn btn-success pull-right"  ng-click="model.followUser()" >Follow</a>
+                        <a class="btn btn-danger pull-right" ng-click="model.unFollow()" >Unfollow</a>
                     </div>
                    </div>
                     <div class="panel-body">

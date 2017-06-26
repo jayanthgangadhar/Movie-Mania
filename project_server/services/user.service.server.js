@@ -19,13 +19,14 @@ passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
 app.post("/api/following", addFollowing);
+app.post("/api/users", findAllUsers);
 app.post("/api/followers", addFollowers);
 app.post("/api/remove/user/followers", remFollower);
 app.get('/api/assignment/user', findUserByCredentials);
 app.get('/api/assignment/user/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
-app.delete('/api/assignment/user/:userId', deleteUser);
+app.delete('/api/project/user/:userId', deleteUser);
 app.post  ('/api/assignment/login', passport.authenticate('local'), login);
 app.post  ('/api/assignment/logout',logout);
 app.post  ('/api/assignment/register',register);
@@ -100,6 +101,18 @@ function addFollowing(req, res) {
         });
 }
 
+
+function findAllUsers(req, res) {
+    var following = req.body;
+    userModel
+        .findAllUsers()
+        .then(function (users) {
+            res.json(users);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
 function addFollowers(req, res) {
     var following = req.body;
     userModel
@@ -166,6 +179,7 @@ function login(req,res) {
 
 function deleteUser(req,res) {
     var userId = req.params.userId;
+    console.log("Hii bruuuh" + userId)
     userModel
         .deleteUser(userId)
         .then(function (status) {

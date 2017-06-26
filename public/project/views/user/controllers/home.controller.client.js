@@ -3,14 +3,21 @@
         .module("project")
         .controller("homeController", homeController);
 
-    function homeController($http, $location, homeService,userService) {
+    function homeController($http,  $location, homeService,userService) {
+
         var model = this;
+        // model.user=currentUser;
         model.search = search;
         model.selectedMovie = selectedMovie;
         model.login = login;
         model.register = register;
         model.generateUrl = generateUrl;
 
+
+
+        // model.loggedUser = currentUser;
+
+        // console.log(model.movies);
         function init() {
             model.popularMovies = [];
             homeService

@@ -18,13 +18,18 @@
             register:register,
             addFollowing:addFollowing,
             addFollowers:addFollowers,
-            remFollower:remFollower
+            remFollower:remFollower,
+            findAllUsers:findAllUsers
         };
 
         return api;
 
         function addFollowing(following) {
             return $http.post("/api/following/" , following);
+        }
+
+        function findAllUsers() {
+            return $http.post("/api/users/");
         }
 
         function addFollowers(following) {
@@ -75,7 +80,7 @@
 
 
         function deleteUser(userId) {
-            var url = '/api/assignment/user/'+userId;
+            var url = '/api/project/user/'+userId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;

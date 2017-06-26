@@ -61,7 +61,7 @@
                 .findAllReviews(model.userID)
                 .then(function (reviews) {
                     model.reviews = reviews.data;
-                    console.log(model.reviews)
+                    // console.log(model.reviews)
                 });
         }
         init();

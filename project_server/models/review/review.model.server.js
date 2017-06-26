@@ -25,7 +25,7 @@ function createReview(newReview, userId) {
 }
 
 function deleteReviewsforUser(userID) {
-    return reviewModel.deleteMany({ user : userID })
+    return reviewModel.deleteMany({ _user : userID })
 }
 
 function findReviewById(userId) {

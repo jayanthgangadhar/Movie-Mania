@@ -16,6 +16,7 @@
                     <li ><a href="#!/user/following" class="visible-xs">Following</a></li>
                     <li class="active"><a href="#!/user/followers" class="visible-xs">Followers</a></li>
                     <li><a href="#!/user/reviews" class="visible-xs">Reviews</a></li>
+                    <li><a ng-if="model.user.role == model.admin" href="#!/user/admin" class="visible-xs">admin</a></li>
                     <li><a ng-click="model.logout()">Logout</a></li>
                 </ul>
             </div>
@@ -37,6 +38,7 @@
                         <li><a href="#!/user/following">Following</a></li>
                         <li class="active"><a href="#!/user/followers">Followers</a></li>
                         <li><a href="#!/user/reviews">Reviews</a></li>
+                        <li><a ng-if="model.user.role == model.admin" href="#!/user/admin">admin</a></li>
                     </ul>
                 </div>
             </ul>

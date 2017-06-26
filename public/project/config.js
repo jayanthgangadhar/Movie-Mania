@@ -6,7 +6,7 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/',{
-                templateUrl:'views/home.html',
+                templateUrl:'./views/home.html',
                 controller:'homeController',
                 controllerAs:'model'
             })
@@ -61,6 +61,15 @@
             .when('/user/search',{
                 templateUrl:'./views/user/templates/userSearch.view.client.html',
                 controller:'searchController',
+                controllerAs:'model',
+                resolve:{
+                    currentUser: checkCurrentUser
+                }
+            })
+
+            .when('/user/admin',{
+                templateUrl:'./views/user/templates/admin.view.client.html',
+                controller:'adminController',
                 controllerAs:'model',
                 resolve:{
                     currentUser: checkLoggedIn

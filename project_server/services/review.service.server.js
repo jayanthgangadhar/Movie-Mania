@@ -25,6 +25,7 @@ function createReview(req, res) {
 
 function deleteReviewsforUser(req, res) {
     var userID = req.params.userId;
+    console.log("Boli" + userID)
     reviewModel
         .deleteReviewsforUser(userID)
         .then(function (status) {
