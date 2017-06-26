@@ -5,6 +5,7 @@ app.get("/api/movie/demo/:movieId",findMovieById);
 app.get("/api/movie/:movieId/trailer",findTrailerByMovieid);
 app.get("/api/movie/:movieId/cast",findCastByMovieid);
 app.get("/api/movie/:movieId/similar", findSimilarMovie);
+app.get("/api/popularmovie", findPoplarMovies);
 
 var TMDBKey = "ae05a08f330d781c8557ec8fafeea6a6";
 var baseUrl = "api.themoviedb.org";
@@ -12,15 +13,15 @@ var path = "/3/OPTION?api_key=API_KEY&language=en&query=";
 
 // https://api.themoviedb.org/3/movie/ 28/similar?api_key=ae05a08f330d781c8557ec8fafeea6a6&language=en-US&page=1
 
-var topMovies = "movie/top_rated";
+var popularMovies = "movie/popular";
 var movieByTitle = "search/movie";
 var similarMovies = "movie/MOVIEID/similar";
-var genreList = "genre/movie/list";
 var movieCredits = "movie/MOVIEID/credits";
 var movieDetails = "movie/MOVIEID";
 var movieName = "&query=QUERY";
 var moviePage = "&page=PAGE";
 var nowPlayingMovies = "movie/now_playing?";
+
 
 function findMovieByTitle(req,res) {
     var text = req.params.title;
@@ -107,6 +108,29 @@ function findCastByMovieid(req,res) {
     http.get(options,callback);
 }
 
+function findPoplarMovies(req,res) {
+    var options={
+        host:baseUrl,
+        path:path
+            .replace("OPTION",popularMovies)
+            .replace("API_KEY",TMDBKey)
+            .replace("&query=","")
+    };
+
+    var callback = function (response) {
+        var str = '';
+        response.on('data', function (data) {
+            str += data;
+        });
+        response.on('end', function () {
+            res.writeHead(200, {"Content-Type": "application/json"});
+            res.end(str);
+        });
+    };
+
+    http.get(options,callback);
+}
+
 function findSimilarMovie(req,res) {
     var id = req.params.movieId;
     var options={
@@ -132,6 +156,8 @@ function findSimilarMovie(req,res) {
 }
 
 
-// https://api.themoviedb.org/3/movie/now_playing?api_key=ae05a08f330d781c8557ec8fafeea6a6&language=en-US&page=1&region=US
+
+
+// https://api.themoviedb.org/3/movie/top_rated?api_key=ae05a08f330d781c8557ec8fafeea6a6&language=en-US&page=1
 
 

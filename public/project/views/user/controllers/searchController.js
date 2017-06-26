@@ -11,6 +11,22 @@
         model.register = register;
         model.generateUrl = generateUrl;
 
+        function init() {
+            model.popularMovies = [];
+            homeService
+                .findPopularMovie()
+                .then(function(popMovie){
+                    for(movie in popMovie){
+                        var popularMov = popMovie[movie];
+                        popularMov.url = generateUrl(popularMov.poster_path);
+                        // .replace("original","w500");
+                        model.popularMovies.push(popularMov);
+                        // console.log(model.simMovies);
+                    }
+                })
+
+        }init();
+
         function register(user) {
             // console.log(user);
             if (user.password !== user.password2){

@@ -23,26 +23,6 @@
                 });
         }
 
-        // function postmessage(message) {
-        //     // console.log(message);
-        //     model.message = message;
-        //     userService
-        //         .findUserById(model.userID)
-        //         .then(function (user) {
-        //             model.user = user;
-        //             model.message.from = currentUser.username;
-        //             model.message.from_id = currentUser._id;
-        //             model.message.to = "po";
-        //             model.message.to_id = "594d608f55186534a045ff63";
-        //             MessageService
-        //                 .createMessage(model.message.from_id, model.message)
-        //                 .then(function (message) {
-        //                     model.message = "";
-        //                 })
-        //         });
-        // }
-
-
         function submit(review) {
             model.rev = review;
             homeService

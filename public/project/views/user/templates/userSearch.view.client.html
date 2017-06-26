@@ -57,6 +57,26 @@
             </div>
         </div>
 
+        <div class="movieDisplay row container-fluid  panel thumbnail" id="popularSearch" style="border: solid 2px black" >
+            <div class="panel-heading">Popular Movies</div>
+            <div class="movies col-sm-6 col-md-4 panel-body" ng-repeat="movie in model.popularMovies">
+                <span class="label label-default pull-right">Release: {{movie.release_date}}</span>
+                <div class="panel-footer">
+                    <div class="caption"  >
+                        <a ng-click="model.selectedMovie(movie.id)">
+                            <h3 class="ng-binding" id="popularHeading" >{{movie.original_title}}</h3>
+                        </a>
+                    </div>
+                    <a ng-click="model.selectedMovie(movie.id)">
+                        <img class="image img-responsive container-fluid"
+                             id="popularImage"
+                             ng-src="{{model.generateUrl(movie.poster_path)}}" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">

@@ -68,6 +68,13 @@ body {
     max-height: 400px;
     object-fit: cover;
 }
+#popularImage{
+    width: 100%;
+    min-height: 200px;
+    height: 342px;
+    max-height: 400px;
+    object-fit: cover;
+}
 
 .movieDisplay{
     /*padding: 10px 0 10px 0;*/
@@ -84,6 +91,12 @@ body {
 
 }
 
+#popularSearch{
+    margin-top: 10px;
+    margin-left: 1px;
+
+}
+
 #first{
     object-fit: contain;
     left: 0;
@@ -94,6 +107,13 @@ body {
 }
 
 #movieHeading{
+    height: 40px;
+    max-height: 52px;
+    overflow: hidden;
+    font-size: medium;
+    width: 100%;
+}
+#popularHeading{
     height: 40px;
     max-height: 52px;
     overflow: hidden;

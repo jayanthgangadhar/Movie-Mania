@@ -37,7 +37,7 @@
 
         function register(user) {
             var url ="/api/assignment/register";
-            console.log(user);
+            // console.log(user);
             return $http.post(url,user)
                 .then(function (response) {
                     return response.data;
@@ -89,7 +89,7 @@
                 })
         }
         function createUser(user) {
-            console.log(user);
+            // console.log(user);
             var url = "/api/assignment/user";
             return $http.post(url, user)
                 .then(function (response) {
@@ -98,7 +98,7 @@
         }
 
         function findUserById(userId) {
-            console.log("HELLO:"+userId);
+            // console.log("HELLO:"+userId);
             var url = "/api/assignment/user/" + userId;
             return $http.get(url)
                 .then(function(response){

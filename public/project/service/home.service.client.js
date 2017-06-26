@@ -10,6 +10,7 @@
         model.findTrailerByMovieid = findTrailerByMovieid;
         model.findCastByMovieId = findCastByMovieId;
         model.findSimilarMovie = findSimilarMovie;
+        model.findPopularMovie = findPopularMovie;
 
         function findSimilarMovie(id) {
             var url = "/api/movie/"+id+"/similar";
@@ -19,6 +20,16 @@
                 })
 
         }
+
+        function findPopularMovie() {
+            var url = "/api/popularmovie";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data.results;
+                })
+
+        }
+
 
 
         function findMovieByTitle(text) {
