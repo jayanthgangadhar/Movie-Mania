@@ -11,7 +11,7 @@
         model.generateUrl = generateUrl;
         model.logout = logout;
         model.submit = submit;
-        model.postmessage = postmessage;
+        // model.postmessage = postmessage;
         model.sendInfo = sendInfo;
 
         function sendInfo(id) {
@@ -23,24 +23,24 @@
                 });
         }
 
-        function postmessage(message) {
-            console.log(message);
-            model.message = message;
-            userService
-                .findUserById(model.userID)
-                .then(function (user) {
-                    model.user = user;
-                    model.message.from = currentUser.username;
-                    model.message.from_id = currentUser._id;
-                    model.message.to = "po";
-                    model.message.to_id = "594d608f55186534a045ff63";
-                    MessageService
-                        .createMessage(model.message.from_id, model.message)
-                        .then(function (message) {
-                            model.message = "";
-                        })
-                });
-        }
+        // function postmessage(message) {
+        //     // console.log(message);
+        //     model.message = message;
+        //     userService
+        //         .findUserById(model.userID)
+        //         .then(function (user) {
+        //             model.user = user;
+        //             model.message.from = currentUser.username;
+        //             model.message.from_id = currentUser._id;
+        //             model.message.to = "po";
+        //             model.message.to_id = "594d608f55186534a045ff63";
+        //             MessageService
+        //                 .createMessage(model.message.from_id, model.message)
+        //                 .then(function (message) {
+        //                     model.message = "";
+        //                 })
+        //         });
+        // }
 
 
         function submit(review) {
@@ -68,7 +68,9 @@
         function init() {
             model.actors= [];
             model.urls=[];
-            model.nowUrls=[];
+            model.simUrls=[];
+            model.simMovies=[];
+            model.map = {};
             // console.log("USER:"+currentUser._id);
             reviewService
                 .findReviewsforMovie(id)
@@ -100,21 +102,16 @@
                 });
 
             homeService
-                .findMoviesPlayingNow()
-                .then(function(nowMovie){
-                    for(movie in nowMovie){
-                        homeService
-                            .findTrailerByMovieid(nowMovie.id)
-                            .then(function (trailers) {
-                                for (trailer in trailers){
-                                        var url = "https://www.youtube.com/embed/"+trailers[trailer].key;
-                                        model.nowUrls.push($sce.trustAsResourceUrl(url));
-                                }
-                            });
-                    }
-
-                    }
-                )
+                .findSimilarMovie(id)
+                .then(function(simMovie){
+                    for(movie in simMovie){
+                        var comMovie = simMovie[movie];
+                        comMovie.url = generateUrl(simMovie[movie].poster_path);
+                            // .replace("original","w500");
+                        model.simMovies.push(comMovie);
+                        // console.log(model.simMovies);
+                        }
+                })
             }init();
 
         function generateUrl(path) {

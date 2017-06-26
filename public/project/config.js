@@ -60,7 +60,7 @@
             })
             .when('/user/search',{
                 templateUrl:'./views/user/templates/userSearch.view.client.html',
-                controller:'homeController',
+                controller:'searchController',
                 controllerAs:'model',
                 resolve:{
                     currentUser: checkLoggedIn

@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("project")
-        .controller("homeController", homeController);
+        .controller("searchController", searchController);
 
-    function homeController($http, $location, homeService,userService) {
+    function searchController($http, $location, homeService,userService, currentUser) {
         var model = this;
         model.search = search;
         model.selectedMovie = selectedMovie;
@@ -55,7 +55,7 @@
             homeService
                 .findMovieByTitle(text)
                 .then(function(movies){
-                    model.movies = movies;
+                        model.movies = movies;
                     }
                 )
         }
@@ -65,7 +65,7 @@
         }
 
         function generateUrl(path) {
-            var url = "http://image.tmdb.org/t/p/w780"+path;
+            var url = "http://image.tmdb.org/t/p/w185"+path;
             return url;
         }
     }

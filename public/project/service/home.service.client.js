@@ -9,10 +9,10 @@
         model.findMovieById = findMovieById;
         model.findTrailerByMovieid = findTrailerByMovieid;
         model.findCastByMovieId = findCastByMovieId;
-        model.findMoviesPlayingNow = findMoviesPlayingNow;
+        model.findSimilarMovie = findSimilarMovie;
 
-        function findMoviesPlayingNow() {
-            var url = "/api/movie/now";
+        function findSimilarMovie(id) {
+            var url = "/api/movie/"+id+"/similar";
             return $http.get(url)
                 .then(function (response) {
                     return response.data.results;

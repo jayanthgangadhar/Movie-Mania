@@ -4,11 +4,13 @@ app.get("/api/movie/:title",findMovieByTitle);
 app.get("/api/movie/demo/:movieId",findMovieById);
 app.get("/api/movie/:movieId/trailer",findTrailerByMovieid);
 app.get("/api/movie/:movieId/cast",findCastByMovieid);
-app.get("/api/movie/now", findMoviesPlayingNow);
+app.get("/api/movie/:movieId/similar", findSimilarMovie);
 
 var TMDBKey = "ae05a08f330d781c8557ec8fafeea6a6";
 var baseUrl = "api.themoviedb.org";
 var path = "/3/OPTION?api_key=API_KEY&language=en&query=";
+
+// https://api.themoviedb.org/3/movie/ 28/similar?api_key=ae05a08f330d781c8557ec8fafeea6a6&language=en-US&page=1
 
 var topMovies = "movie/top_rated";
 var movieByTitle = "search/movie";
@@ -105,13 +107,15 @@ function findCastByMovieid(req,res) {
     http.get(options,callback);
 }
 
-function findMoviesPlayingNow(req,res) {
+function findSimilarMovie(req,res) {
+    var id = req.params.movieId;
     var options={
         host:baseUrl,
         path:path
-            .replace("OPTION",nowPlayingMovies)
+            .replace("OPTION",similarMovies)
+            .replace("MOVIEID",id)
             .replace("API_KEY",TMDBKey)
-            .replace("&query=",region=US)
+            .replace("&query=","")
     };
     var callback = function (response) {
         var str = '';

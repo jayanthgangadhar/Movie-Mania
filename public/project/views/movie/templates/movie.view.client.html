@@ -105,8 +105,8 @@
 
             </div>
         </div>
-        <div id="review">
-            <div class="panel-footer container-fluid">
+        <div id="review" >
+            <div class="panel-footer container-fluid" >
                 <h4><b>Write a Review:</b></h4>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Please enter title of the review" ng-model="model.review.title">
@@ -115,6 +115,7 @@
                     <textarea class="form-control" rows="5" placeholder="Please enter the review" ng-model="model.review.description"></textarea>
                 </div>
                 <a class="btn btn-success"  ng-click="model.submit(model.review)">Submit</a>
+                <!--<a class="btn btn-success" ng-click="model.submit(model.review)">fghfght</a>-->
             </div>
 
         </div>
@@ -128,8 +129,10 @@
         </div>
         <div class="panel container-fluid movieDetail">
             <div class="panel-body trailer ">
-                <h4><b>Now Playing:</b></h4>
-                <iframe ng-repeat="nowUrl in model.nowUrls" id="nowTrailer" width="100%" height="200px" frameborder="0" src="{{nowUrl}}" allowfullscreen ></iframe>
+                <h4><b>Similar Movies:</b></h4>
+                <a ng-repeat="simUrl in model.simMovies" href="#!/user/movie/{{simUrl.id}}">
+                    <img ng-src="{{simUrl.url}}" width="100%" height="200px" style="margin-bottom: 10px">
+                </a>
             </div>
         </div>
     </div>
