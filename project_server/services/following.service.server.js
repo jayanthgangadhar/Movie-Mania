@@ -1,15 +1,15 @@
 var app = require("../../express");
 var http = require("http");
-var followingModel = require("../models/following/following.model.server");
+var userModel = require("../models/user/user.model.server");
 
-app.post("/api/following", startFollowing);
+app.post("/api/following", addFollowing);
 app.get("/api/user/following/:userId", findAllfollowingforId);
 app.get("/api/user/followers/:userId", findAllfollowersforId);
-app.delete("/api/following/delete/:id", unFollow);
+app.post("/api/following/delete", remFollowing);
 
-function startFollowing(req, res) {
+function addFollowing(req, res) {
     var following = req.body;
-    followingModel.startFollowing(following)
+    userModel.startFollowing(following)
         .then(function (message) {
             res.json(message);
         }, function (err) {
@@ -17,11 +17,39 @@ function startFollowing(req, res) {
         });
 }
 
-function unFollow(req, res) {
-    var id = req.params.id;
-    followingModel.unFollow(id)
-        .then(function (status) {
-            res.sendStatus(200);
+function remFollowers(req, res) {
+    var following = req.body;
+    userModel
+        .remFollower(following._follower, following._following)
+        .then(function (review) {
+            res.json(review);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
+function createReview(req, res) {
+    var userId = req.params.id;
+    var newreview = req.body;
+    newreview._user = userId;
+    reviewModel
+        .createReview(newreview, userId)
+        .then(function (review) {
+            res.json(review);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
+
+function remFollowing(req, res) {
+    console.log("_____remfollowing_______");
+    var following = req.body;
+    console.log(following);
+    userModel
+        .remFollowing(following._following, following._follower)
+        .then(function (review) {
+            res.json(review);
         }, function (err) {
             res.sendStatus(500).send(err);
         });
@@ -30,7 +58,7 @@ function unFollow(req, res) {
 
 function findAllfollowingforId(req, res) {
     var userID = req.params.userId;
-    followingModel.findAllfollowingforId(userID)
+    userModel.findAllfollowingforId(userID)
         .then(function (following) {
             res.json(following);
         }, function (err) {
@@ -40,8 +68,9 @@ function findAllfollowingforId(req, res) {
 
 function findAllfollowersforId(req, res) {
     var userID = req.params.userId;
-    followingModel.findAllfollowersforId(userID)
+    userModel.findAllfollowersforId(userID)
         .then(function (followers) {
+            console.log("FOllowers:" +followers);
             res.json(followers);
         }, function (err) {
             res.sendStatus(500).send(err);

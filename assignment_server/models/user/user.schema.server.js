@@ -13,6 +13,8 @@ var userSchema = mongoose.Schema({
         token:String
     },
     websites:[{type:mongoose.Schema.Types.ObjectId, ref:"websiteModel"}],
+    following:[{type:mongoose.Schema.Types.ObjectId, ref:"websiteModel"}],
+    followers:[{type:mongoose.Schema.Types.ObjectId, ref:"websiteModel"}],
     dateCreated: {type: Date, default: Date.now()}
 },{collection: "user"});
 

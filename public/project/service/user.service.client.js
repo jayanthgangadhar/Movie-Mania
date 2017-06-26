@@ -15,10 +15,25 @@
             login:login,
             logout:logout,
             loggedin:loggedin,
-            register:register
+            register:register,
+            addFollowing:addFollowing,
+            addFollowers:addFollowers,
+            remFollower:remFollower
         };
 
         return api;
+
+        function addFollowing(following) {
+            return $http.post("/api/following/" , following);
+        }
+
+        function addFollowers(following) {
+            return $http.post("/api/followers/" , following);
+        }
+
+        function remFollower(following) {
+            return $http.post("/api/remove/user/followers" , following);
+        }
 
         function register(user) {
             var url ="/api/assignment/register";

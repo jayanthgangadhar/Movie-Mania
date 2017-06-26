@@ -18,6 +18,9 @@ passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
+app.post("/api/following", addFollowing);
+app.post("/api/followers", addFollowers);
+app.post("/api/remove/user/followers", remFollower);
 app.get('/api/assignment/user', findUserByCredentials);
 app.get('/api/assignment/user/:userId', findUserById);
 app.post('/api/assignment/user', createUser);
@@ -74,6 +77,44 @@ function googleStrategy(token, refreshToken, profile, done) {
             
         });
 }
+
+function remFollower(req, res) {
+    var following = req.body;
+    userModel
+        .remFollower(following._follower, following._following)
+        .then(function (review) {
+            res.json(review);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
+function addFollowing(req, res) {
+    var following = req.body;
+    userModel
+        .addFollowing(following._following, following._follower)
+        .then(function (review) {
+            res.json(review);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
+function addFollowers(req, res) {
+    var following = req.body;
+    userModel
+        .addFollowers(following._follower, following._following)
+        .then(function (review) {
+            res.json(review);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
+
+
+
+
 
 function register(req,res) {
     var user = req.body;

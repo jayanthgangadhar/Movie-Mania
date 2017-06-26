@@ -7,16 +7,16 @@
                 <span class="icon-bar"></span>
 
             </button>
-            <a class="navbar-brand" href="#!/">Profile</a>
+            <a class="navbar-brand" href="#!/">Home</a>
         </div>
         <div>
-            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-                <ul class="nav navbar-nav ">
-                    <li><a data-toggle="modal" data-target="#myRModal">Write Review</a></li>
-                    <li><a href="#!/user/profile" class="visible-xs">Home</a></li>
-                    <li><a href="#" class="visible-xs">Followers</a></li>
-                    <li><a href="#" class="visible-xs">Messages</a></li>
-                    <li><a href="#!/">Logout</a></li>
+            <div class="collapse navbar-collapse navbar-right" id="Navbar">
+                <ul class="nav navbar-nav">
+                    <li ><a href="#!/user/profile" class="visible-xs">Home</a></li>
+                    <li ><a href="#!/user/following" class="visible-xs">Following</a></li>
+                    <li ><a href="#!/user/followers" class="visible-xs">Followers</a></li>
+                    <li class="active"><a href="#!/user/reviews" class="visible-xs">Reviews</a></li>
+                    <li><a ng-click="model.logout()" >Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -30,18 +30,22 @@
         <div class="container-fluid">
             <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100%">
         </div>
+
+
         <!--Navbar-->
         <ul class="nav nav-pills nav-stacked">
-            <div class="container-fluid" style="text-align: left">
-                <ul class="nav nav-pills nav-stacked sideNav">
-                    <li><a data-toggle="modal" data-target="#myRModal">Write Review</a></li>
-                    <li class="active"><a href="#!/user/profile">Home</a></li>
-                    <li><a href="#">Followers</a></li>
-                    <li><a href="#!/user/reviews">Reviews</a></li>
-                    <li><a href="#!/user/message">Messages</a></li>
-                    <li><a href="#">Menu 3</a></li>
-                </ul>
-            </div>
+            <!--<div class="container-fluid">-->
+
+                    <div class="container-fluid" style="text-align: left">
+                        <ul class="nav nav-pills nav-stacked sideNav">
+                            <li ><a href="#!/user/profile">Profile</a></li>
+                            <li><a href="#!/user/following">Following</a></li>
+                            <li><a href="#!/user/followers">Followers</a></li>
+                            <li class="active"><a href="#!/user/reviews">Reviews</a></li>
+                        </ul>
+                    </div>
+
+            <!--</div>-->
         </ul>
     </div>
 
@@ -58,8 +62,8 @@
                     <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" class="media-object" width="60px">
                 </div>
                 <div class="media-body hidden-xs">
-                    <h4 class="media-heading"><a href="#/home/{{model.userID}}/res/{{review.placeID}}">{{review.place}}</a>
-                        <small ><i>Posted on {{model.getDateFormat(review.date)|date:'MM-dd-yyyy'}}</i></small></h4>
+                    <h4 class="media-heading"><a href="#!/movie/{{review.movieID}}">{{review.moviename}}</a></h4>
+                        <small ><i>Posted on {{review.date}}</i></small>
                     <div >
                         <p>{{review.description}}</p>
                     </div>
@@ -129,5 +133,82 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+            </button>
+            <a class="navbar-brand" href="#!/">Home</a>
+        </div>
+        <div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li ><a href="#!/user/profile" class="visible-xs">Home</a></li>
+                    <li ><a href="#!/user/following" class="visible-xs">Following</a></li>
+                    <li class="active"><a href="#!/user/followers" class="visible-xs">Followers</a></li>
+                    <li><a href="#!/user/reviews" class="visible-xs">Reviews</a></li>
+                    <li><a ng-click="model.logout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="column col-xs-2 hidden-xs"   style="background-color:black" >
+            <div class="container-fluid">
+                <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="100%">
+            </div>
+            <!--Navbar-->
+            <ul class="nav nav-pills nav-stacked">
+                <div class="container-fluid" style="text-align: left">
+                    <ul class="nav nav-pills nav-stacked sideNav">
+                        <li ><a href="#!/user/profile">Profile</a></li>
+                        <li><a href="#!/user/following">Following</a></li>
+                        <li class="active"><a href="#!/user/followers">Followers</a></li>
+                        <li><a href="#!/user/reviews">Reviews</a></li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+        <div class=" column col-xs-12 col-sm-8 ">
+            <div class="container-fluid">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="container-fluid">Profile
+                            <a class="btn btn-success pull-right"  ng-click="model.followUser()" >UnFollow</a>
+                            <!--<a class="btn btn-success pull-right" ng-click="model.unFollow()" >Unfollow</a>-->
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-repeat="follower in model.followerUsers">
+                            <h1><a href="#!/user/profile/{{follower._id}}">{{follower.username}}</a></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

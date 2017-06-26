@@ -7,8 +7,11 @@ var userSchema = mongoose.Schema({
     password: String,
     phone: String,
     email: String,
+    role: {type:String, enum:['USER', 'ADMIN','CRITIC','GUEST']},
     dateCreated: {type: Date, default: Date.now()},
-    reviews: [{type:mongoose.Schema.Types.ObjectId, ref:"reviewModel"}]
+    reviews: [{type:mongoose.Schema.Types.ObjectId, ref:"reviewModel"}],
+    following: [{type:mongoose.Schema.Types.ObjectId, ref:"userModel"}],
+    followers: [{type:mongoose.Schema.Types.ObjectId, ref:"userModel"}]
 },{collection: "prouser"});
 
 module.exports = userSchema;

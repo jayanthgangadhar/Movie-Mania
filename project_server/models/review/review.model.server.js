@@ -33,7 +33,7 @@ function findReviewById(userId) {
 }
 
 function findAllReviews(userId) {
-    return reviewModel.find({userID: userId})
+    return reviewModel.find({_user: userId})
 }
 
 function findReviewsforMovie(id) {

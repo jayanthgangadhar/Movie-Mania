@@ -6,15 +6,15 @@
     function followingService($http) {
 
         var api ={
-            "startFollowing" : startFollowing,
+            "addFollowing" : addFollowing,
             "findAllfollowingforId" : findAllfollowingforId,
             "findAllfollowersforId" : findAllfollowersforId,
-            "unFollow" : unFollow,
-            "deleteMessagesforUser" : deleteMessagesforUser
+            "deleteMessagesforUser" : deleteMessagesforUser,
+            "remFollowing" : remFollowing
         };
         return api;
 
-        function startFollowing(following) {
+        function addFollowing(following) {
             return $http.post("/api/following/" , following);
         }
 
@@ -26,9 +26,13 @@
             return $http.get("/api/user/followers/" + userID);
         }
 
-        function unFollow(id) {
-            return $http.delete("/api/following/delete/" + id);
+        function remFollowing(following) {
+            // return $http.post("/api/following/remove" , following);
+            return $http.post("/api/following/delete" , following);
         }
+
+
+
 
         function deleteMessagesforUser(uid) {
             return $http.delete("/api/messages/" + uid);

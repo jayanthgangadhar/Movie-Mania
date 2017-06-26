@@ -61,7 +61,7 @@
         }
 
         function selectedMovie(id) {
-            $location.url("/movie/"+id);
+            $location.url("/user/movie/"+id);
         }
 
         function generateUrl(path) {
