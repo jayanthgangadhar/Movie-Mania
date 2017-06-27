@@ -7,6 +7,7 @@
         var model = this;
         // model.user = currentUser;
         model.thisUser = currentUser;
+        model.uflag;
         // model.demo = currentUser;
         model.userId = currentUser._id;
         var id = $routeParams.movieId;
@@ -25,6 +26,7 @@
             model.simMovies=[];
             model.map = {};
             // console.log("USER:"+currentUser._id);
+
             reviewService
                 .findUserReviewsforMovie(id)
                 .then(function (reviews) {
@@ -137,7 +139,7 @@
         }
 
         function login(user) {
-            // console.log(user);
+            console.log(user);
             userService
                 .login(user.username, user.password)
                 .then(function (found) {

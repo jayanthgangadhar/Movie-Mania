@@ -18,7 +18,7 @@
                     <ul class="nav navbar-nav">
                         <li><a ng-if="model.checkEmpty(model.thisUser)" data-toggle="modal" data-target="#myModal" class="visible-xs">Login</a></li>
                         <li><a ng-if="model.checkEmpty(model.thisUser)" data-toggle="modal" data-target="#regModal" class="visible-xs">Register</a></li>
-                        <li><a ng-hide="model.checkEmpty(model.thisUser)" class="visible-xs">{{model.thisUser.username}}</a></li>
+                        <li><a ng-hide="model.checkEmpty(model.thisUser)" href="#!/user/profile" class="visible-xs">{{model.thisUser.username}}</a></li>
                         <li><a ng-hide="model.checkEmpty(model.thisUser)" class="visible-xs" ng-click="model.logout(model.thisUser)">Logout</a></li>
                     </ul>
                 </div>
@@ -28,7 +28,7 @@
                 <ul class="nav navbar-nav">
                     <li><a ng-if="model.checkEmpty(model.thisUser)" data-toggle="modal" data-target="#myModal" >Login</a></li>
                     <li><a ng-if="model.checkEmpty(model.thisUser)" data-toggle="modal" data-target="#regModal">Register</a></li>
-                    <li><a ng-hide="model.checkEmpty(model.thisUser)" >{{model.thisUser.username}}</a></li>
+                    <li><a ng-hide="model.checkEmpty(model.thisUser)" href="#!/user/profile">{{model.thisUser.username}}</a></li>
                     <li><a ng-hide="model.checkEmpty(model.thisUser)" ng-click="model.logout(model.thisUser)">Logout</a></li>
                 </ul>
             </div>
@@ -248,7 +248,8 @@
                 <div class="form-group">
                     <textarea class="form-control" rows="5" placeholder="Please enter the review" ng-model="model.review.description"></textarea>
                 </div>
-                <a class="btn btn-success"  ng-click="model.submit(model.review)">Submit</a>
+                <a class="btn btn-success" ng-click="model.submit(model.review)">Submit</a>
+                <!--<a class="btn btn-success" ng-click="model.submit(model.review)" disabled="model.checkEmpty(model.user)">Submit</a>-->
                 <!--<a class="btn btn-success" ng-click="model.submit(model.review)">fghfght</a>-->
             </div>
 
