@@ -12,7 +12,8 @@
         model.updateReview = updateReview;
         model.deleteReview = deleteReview;
         model.submit = submit;
-        console.log(model.userID);
+        model.logout = logout;
+        // console.log(model.userID);
 
 
         function submit(review) {
@@ -50,6 +51,15 @@
                 .then(function () {
                     init();
                 })
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url("/")
+                })
+
         }
 
         function sendData(review) {

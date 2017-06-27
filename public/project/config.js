@@ -27,7 +27,7 @@
                 }
             })
             .when('/user/profile/:id',{
-                templateUrl:'./views/user/templates/profile.view.client.html',
+                templateUrl:'./views/user/templates/profileSearch.view.client.html',
                 controller:'profileViewController',
                 controllerAs:'model',
                 resolve:{
@@ -70,6 +70,31 @@
             .when('/user/admin',{
                 templateUrl:'./views/user/templates/admin.view.client.html',
                 controller:'adminController',
+                controllerAs:'model',
+                resolve:{
+                    currentUser: checkLoggedIn
+                }
+            })
+
+            .when('/user/:id/following',{
+                templateUrl:'./views/user/templates/followingSearch.view.client.html',
+                controller:'profileViewController',
+                controllerAs:'model',
+                resolve:{
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when('/user/:id/followers',{
+                templateUrl:'./views/user/templates/followersSearch.view.client.html',
+                controller:'profileViewController',
+                controllerAs:'model',
+                resolve:{
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when('/user/:id/reviews',{
+                templateUrl:'./views/user/templates/reviewsSearch.view.client.html',
+                controller:'profileViewController',
                 controllerAs:'model',
                 resolve:{
                     currentUser: checkLoggedIn

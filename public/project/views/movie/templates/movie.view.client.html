@@ -13,10 +13,11 @@
 
             <div class="collapse navbar-collapse navbar-right" id="myNavbar" >
                 <ul class="nav navbar-nav">
-                    <li><a ng-hide="model.checkEmpty(model.user)" href="#!/user/profile" >{{model.demo.username}}</a></li>
+                    <li><a ng-hide="model.checkEmpty(model.user)" href="#!/user/profile/{{model.demo._id}}" >{{model.demo.username}}</a></li>
                     <li><a ng-hide="model.checkEmpty(model.user)" ng-click="model.logout()">Logout</a></li>
                 </ul>
             </div>
+
             <div class="collapse navbar-collapse navbar-right" id="checkNavbar" >
                 <ul class="nav navbar-nav">
                     <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#myModal" >Login</a></li>

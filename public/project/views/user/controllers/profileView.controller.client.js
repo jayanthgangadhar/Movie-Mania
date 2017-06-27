@@ -10,16 +10,44 @@
         model.followUser = followUser;
         model.unFollow = unFollow;
         model.cId = currentUser._id;
+        model.curUser = currentUser;
 
         function init() {
              userService
                  .findUserById(id)
                  .then(function (user) {
-                     console.log(user);
+                     // console.log(user);
                      model.user = user;
-                     checkUser();
 
-                 })
+                 });
+
+            followingService
+                .findAllfollowersforId(id)
+                .then(function (followers) {
+                    model.followers = followers.data[0].followers;
+                    model.followers.forEach(function (id) {
+                        userService
+                            .findUserById(id)
+                            .then(function (user) {
+                                model.followerUsers.push(user)
+                            })
+                    });
+
+                });
+            followingService
+                .findAllfollowingforId(id)
+                .then(function (following) {
+                    //console.log(following);
+                    model.following = following.data[0].following;
+                    model.following.forEach(function (id) {
+                        userService
+                            .findUserById(id)
+                            .then(function (user) {
+                                model.followingUsers.push(user)
+                            })
+                    });
+                    //
+                });
         }
         init();
 
@@ -32,19 +60,11 @@
 
         }
 
-        function checkUser() {
-            var bol = false;
-            if (model.cId in model.user.followers){
-                console.log("yes");
-            }
-            console.log("no");
-        }
-
         function unFollow() {
             model.following = {
                 _following : model.user._id,
                 _follower: currentUser._id
-            }
+            };
             followingService
                 .remFollowing(model.following)
                 .then(function (data) {
@@ -71,12 +91,6 @@
                     })
 
             })
-            /*followingService
-                .startFollowing(model.following)
-                .then(function (data) {
-                    model.follow = data;
-                });*/
-            //console.log(model.following)
         }
 
 

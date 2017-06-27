@@ -12,10 +12,10 @@
         <div>
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li ><a href="#!/user/profile" class="visible-xs">Profile</a></li>
-                    <li class="active"><a href="#!/user/following" class="visible-xs">Following</a></li>
-                    <li><a href="#!/user/followers" class="visible-xs">Followers</a></li>
-                    <li><a href="#!/user/reviews" class="visible-xs">Reviews</a></li>
+                    <li ><a href="#!/user/profile/{{model.user._id}}" class="visible-xs">Profile</a></li>
+                    <li class="active"><a href="#!/user/{{model.user._id}}/following" class="visible-xs">Following</a></li>
+                    <li><a href="#!/user/{{model.user._id}}/followers" class="visible-xs">Followers</a></li>
+                    <li><a href="#!/user/{{model.user._id}}/reviews" class="visible-xs">Reviews</a></li>
                     <li><a ng-if="model.user.role == model.admin" href="#!/user/admin" class="visible-xs">admin</a></li>
                     <li><a ng-click="model.logout()">Logout</a></li>
                 </ul>
@@ -35,10 +35,10 @@
             <ul class="nav nav-pills nav-stacked">
                 <div class="container-fluid" style="text-align: left">
                     <ul class="nav nav-pills nav-stacked sideNav">
-                        <li ><a href="#!/user/profile">Profile</a></li>
-                        <li class="active"><a href="#!/user/following">Following</a></li>
-                        <li><a href="#!/user/followers">Followers</a></li>
-                        <li><a href="#!/user/reviews">Reviews</a></li>
+                        <li ><a href="#!/user/profile/{{model.user._id}}">Profile</a></li>
+                        <li class="active"><a href="#!/user/{{model.user._id}}/following">Following</a></li>
+                        <li><a href="#!/user/{{model.user._id}}/followers">Followers</a></li>
+                        <li><a href="#!/user/{{model.user._id}}/reviews">Reviews</a></li>
                         <li><a ng-if="model.user.role == model.admin" href="#!/user/admin">admin</a></li>
                     </ul>
                 </div>
