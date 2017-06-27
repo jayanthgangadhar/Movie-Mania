@@ -20,6 +20,7 @@
         model.sendInfo = sendInfo;
 
         function init() {
+            console.log(model.userId);
             model.actors= [];
             model.urls=[];
             model.simUrls=[];
