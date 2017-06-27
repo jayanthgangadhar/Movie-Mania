@@ -9,11 +9,19 @@
         model.logout = logout;
         model.followUser = followUser;
         model.unFollow = unFollow;
+        model.getDateFormat = getDateFormat;
         model.cId = currentUser._id;
         model.curUser = currentUser;
         model.followerUsers = [];
         model.followingUsers = [];
         model.flag;
+
+        function getDateFormat(date) {
+            var d = date.slice(0, 10).split('-');
+            var newDate = (d[1] +'/'+ d[2] +'/'+ d[0]);
+            return newDate;
+
+        }
 
 
         function init() {
