@@ -14,10 +14,10 @@ var facebookConfig = {
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var googleConfig = {
-    clientID     : "141971539423-3dbq5t12ivrdq1i8u8g8p4kmlu0r3ccb.apps.googleusercontent.com",
-    // process.env.GOOGLE_CLIENT_ID,
-    clientSecret : "y2BnvmnZyvlmxJbZSXVq8B9Q",
-    callbackURL  : "https://jay-webdev.herokuapp.com/auth/google/callback"
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET, //"3efdb78b9684420de9c2aa408527fdc0",
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL,
+    profileFields: ['id', 'displayName', 'name', 'email']
 };
 
 
