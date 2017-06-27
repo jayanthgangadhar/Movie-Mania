@@ -16,6 +16,8 @@
     font-size: large;
     position: relative;
 }
+
+
 .ng-submitted .ng-invalid{
     background-color: red;
 }

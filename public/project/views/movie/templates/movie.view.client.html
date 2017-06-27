@@ -151,6 +151,7 @@
                     </div>
                     <div id="criticreviews" class="tab-pane fade">
                         <br>
+                        <div class="alert alert-danger"  ng-if="(model.creviews).length < 1"> No reviews posted by critics </div>
                         <div ng-repeat="review in model.creviews" class="panel-footer" >
                             <div class="row" >
                                 <div class="col-xs-2">
@@ -176,6 +177,7 @@
                     </div>
                     <div id="userreviews"  class="tab-pane fade">
                         <br>
+                        <div class="alert alert-danger"  ng-if="(model.reviews).length < 1"> No reviews posted by users </div>
                         <div ng-repeat="review in model.reviews" class="panel-footer" >
                             <div class="row" >
                                 <div class="col-xs-2">
