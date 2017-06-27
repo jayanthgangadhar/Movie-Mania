@@ -57,7 +57,7 @@ app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
         failureRedirect: '/'
     }), function (req, res) {
-        res.redirect('http://localhost:5000/project/#!/user/profile');
+        res.redirect('https://jay-webdev.herokuapp.com/project/#!/user/profile');
     });
 
 
