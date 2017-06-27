@@ -96,16 +96,22 @@
                     <a class="navbar-brand" >Home</a>
                 </div>
                 <div>
-                    <div class="collapse navbar-collapse navbar-right" id="myNavbar" >
-                        <ul class="nav navbar-nav">
-                            <li><a ng-hide="model.checkEmpty(model.user)" href="#!/user/profile" >{{model.user.username}}</a></li>
-                            <li><a ng-hide="model.checkEmpty(model.user)" ng-click="model.logout()">Logout</a></li>
-                        </ul>
+                    <div>
+                        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#myModal" class="visible-xs">Login</a></li>
+                                <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#regModal" class="visible-xs">Register</a></li>
+                                <li><a ng-hide="model.checkEmpty(model.user)" class="visible-xs">{{model.user.username}}</a></li>
+                                <li><a ng-hide="model.checkEmpty(model.user)" class="visible-xs" ng-click="model.logout(model.user)">Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="collapse navbar-collapse navbar-right" id="checkNavbar" >
                         <ul class="nav navbar-nav">
                             <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#myModal" >Login</a></li>
                             <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#regModal">Register</a></li>
+                            <li><a ng-hide="model.checkEmpty(model.user)" >{{model.user.username}}</a></li>
+                            <li><a ng-hide="model.checkEmpty(model.user)" ng-click="model.logout(model.user)">Logout</a></li>
                         </ul>
                     </div>
                 </div>

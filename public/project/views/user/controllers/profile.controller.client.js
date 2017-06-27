@@ -3,13 +3,14 @@
         .module("project")
         .controller("profileController",profileController);
 
-    function profileController($location ,userService,currentUser, followingService, homeService) {
+    function profileController($location ,userService,currentUser, followingService, homeService, reviewService) {
         var model =this;
         model.userID = currentUser._id;
         model.updateUser = updateUser;
         model.logout = logout;
         model.user = currentUser;
         model.search = search;
+        model.deleteUser = deleteUser;
         model.admin = "ADMIN";
         model.selectedMovie = selectedMovie;
         model.generateUrl = generateUrl;
@@ -87,6 +88,21 @@
                 },function () {
                     model.error = "User cannot be Unregistered"
                 })
+        }
+
+        function deleteUser(ID) {
+            var ans = confirm("Delete user?");
+            if (ans) {
+                userService
+                    .deleteUser(ID)
+                    .then(function () {
+                        reviewService
+                            .deleteReviewsforUser(ID)
+                            .then(function (status) {
+                                init();
+                            });
+                    })
+            }
         }
 
 

@@ -137,6 +137,7 @@
         }
 
         function login(user) {
+            // console.log(user);
             userService
                 .login(user.username, user.password)
                 .then(function (found) {

@@ -89,6 +89,21 @@
                         </form>
                     </div>
                 </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-block" ng-click="model.updateUser(model.user)">Update</button>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-danger btn-block" ng-click="model.deleteUser(model.user._id)">Delete</button>
+                </div>
+                <div class="alert alert-dismissable alert-success" ng-show="model.message">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{model.message}}
+                </div>
+
+                <div class="alert alert-dismissable alert-danger" ng-show="model.error">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{model.error}}
+                </div>
             </div>
         </div>
     </div>

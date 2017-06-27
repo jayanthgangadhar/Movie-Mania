@@ -119,7 +119,7 @@
                 <h2 class="modal-title">Welcome </h2>
                 <div class="alert alert-dismissable alert-danger" ng-show="model.xerror">
                     <button type="button" class="close" data-dismiss="alert">x</button>
-                    {{model.xerror}}
+                    {{model.message}}
                 </div>
             </div>
             <div class="modal-body container-fluid">
@@ -132,10 +132,6 @@
                            ng-model="model.user.password" placeholder="Password">
                 </div>
                 <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
-                <!--<a href="/api/auth/facebook" class="btn btn-primary btn-block">
-                    <span class="fa fa-facebook"></span>
-                    Facebook
-                </a>-->
             </div>
         </div>
     </div>

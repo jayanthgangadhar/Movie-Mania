@@ -16,8 +16,8 @@
                     <li><a href="#!/user/following" class="visible-xs">Following</a></li>
                     <li><a href="#!/user/followers" class="visible-xs">Followers</a></li>
                     <li class="active"><a href="#!/user/reviews" class="visible-xs">Reviews</a></li>
-                    <li><a ng-if="model.user.role == model.admin" href="#!/user/admin" class="visible-xs">admin</a></li>
-                    <li><a ng-click="model.logout()">Logout</a></li>
+                    <li><a ng-if="model.user.role == model.admin" href="#!/user/admin" class="visible-xs">Admin</a></li>
+                    <li><a ng-click="model.logout()" ng-hide="model.checkEmpty(model.user)" class="visible-xs">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +40,7 @@
                     <li><a href="#!/user/following">Following</a></li>
                     <li><a href="#!/user/followers">Followers</a></li>
                     <li class="active"><a href="#/user/reviews">Reviews</a></li>
-                    <li><a ng-if="model.user.role === model.admin" href="#!/user/admin">admin</a></li>
+                    <li><a ng-if="model.user.role === model.admin" href="#!/user/admin">Admin</a></li>
                 </ul>
             </div>
         </ul>

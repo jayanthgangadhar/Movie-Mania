@@ -8,14 +8,22 @@
         var model = this;
 
         model.userID = currentUser._id;
+        model.user = currentUser;
         model.sendData = sendData;
         model.updateReview = updateReview;
         model.deleteReview = deleteReview;
         model.submit = submit;
         model.logout = logout;
         model.admin = "ADMIN";
+        model.getDateFormat = getDateFormat;
         // console.log(model.userID);
 
+        function getDateFormat(date) {
+            var d = date.slice(0, 10).split('-');
+            var newDate = (d[1] +'/'+ d[2] +'/'+ d[0]);
+            return newDate;
+
+        }
 
         function submit(review) {
             model.rev = review;

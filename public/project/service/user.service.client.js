@@ -71,6 +71,7 @@
                 username: username,
                 password: password
             };
+            console.log(credentials.password);
             return $http.post(url,credentials)
                 .then(function (response) {
                     return response.data;
