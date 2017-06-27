@@ -9,7 +9,8 @@ reviewModel.findReviewById = findReviewById;
 reviewModel.updateReview = updateReview;
 reviewModel.deleteReview = deleteReview;
 reviewModel.findAllReviews = findAllReviews;
-reviewModel.findReviewsforMovie = findReviewsforMovie;
+reviewModel.findUserReviewsforMovie = findUserReviewsforMovie;
+reviewModel.findCriticReviewsforMovie = findCriticReviewsforMovie;
 reviewModel.deleteReviewsforUser = deleteReviewsforUser;
 
 module.exports = reviewModel;
@@ -36,8 +37,12 @@ function findAllReviews(userId) {
     return reviewModel.find({_user: userId})
 }
 
-function findReviewsforMovie(id) {
-    return reviewModel.find({movieID: id})
+function findUserReviewsforMovie(id) {
+    return reviewModel.find({movieID: id, userRole: "USER"})
+}
+
+function findCriticReviewsforMovie(id) {
+    return reviewModel.find({movieID: id, userRole: "CRITIC"})
 }
 
 function updateReview(reviewID, review) {

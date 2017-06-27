@@ -11,7 +11,8 @@
             "updateReview" : updateReview,
             "deleteReview" : deleteReview,
             "findAllReviews" : findAllReviews,
-            "findReviewsforMovie" : findReviewsforMovie,
+            "findUserReviewsforMovie" : findUserReviewsforMovie,
+            "findCriticReviewsforMovie" : findCriticReviewsforMovie,
             "deleteReviewsforUser" : deleteReviewsforUser
         };
         return api;
@@ -42,8 +43,12 @@
             return $http.get("/api/user/" + userID + "/review");
         }
 
-        function findReviewsforMovie(movieId) {
+        function findUserReviewsforMovie(movieId) {
             return $http.get("/api/rest/" + movieId + "/review");
+        }
+
+        function findCriticReviewsforMovie(movieId) {
+            return $http.get("/api/rest/" + movieId + "/critic/review");
         }
 
     }

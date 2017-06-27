@@ -35,7 +35,7 @@
         }init();
 
         function register(user) {
-            // console.log(user);
+            //console.log(user);
             if (user.password !== user.password2){
                 model.uerror = "Sorry, the passwords do not match";
                 return
@@ -44,14 +44,19 @@
                 model.uerror = "Please enter a valid username";
                 return
             }
+            /*if (typeof user.role === "undefined"){
+                model.uerror = "Please select a role";
+                return
+            }*/
+            user.role = "ADMIN";
             userService
                 .findUserByUsername(user.username)
                 .then(function (user) {
-                    // console.log(user);
+                    console.log(user);
                     model.uerror = "Sorry, that username is taken!";
                 }, function (err) {
                     userService
-                        .register(user)
+                        .register(model.user)
                         .then(function (data) {
                             $location.url('/user/profile');
                         })

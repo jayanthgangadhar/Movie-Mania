@@ -57,7 +57,7 @@
         </tr>
         </thead>
         <tbody ng-repeat="user in model.users">
-        <tr>
+        <tr ng-if="user.role != model.admin">
             <td><a href="#!/user/profile/{{user._id}}">{{user.username}}</a></td>
             <td>{{user.firstname}}</td>
             <td>{{user.lastname}}</td>
@@ -67,8 +67,9 @@
                 <span class="glyphicon glyphicon-comment usergly"></span></a>
                 <a  ng-click="model.viewFollowing(user._id)" title="view following" data-toggle="modal" data-target="#myFModal">
                     <span class="glyphicon glyphicon-envelope usergly"></span></a>
-                <a ng-click="model.deleteUser(user._id)" title="Delete user">
-                    <span class="glyphicon glyphicon-remove usergly rem"></span></a></td>
+                <a ng-click="model.deleteUser(user._id)"  title="Delete user">
+                    <span class="glyphicon glyphicon-remove usergly rem"></span></a>
+                </td>
 
     </table>
 </div>
@@ -138,8 +139,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a class="btn btn-success sb" data-dismiss="modal"
-                                >Close</a>
+                                <a class="btn btn-success sb" data-dismiss="modal" ng-click="model.clearFollowing()">Close</a>
                                 <!--<button type="button" class="btn btn-primary form-control"
                                         ng-click="model.submit(model.review)" data-dismiss="modal">Submit</button>-->
                             </div>

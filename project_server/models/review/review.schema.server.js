@@ -7,6 +7,7 @@ var reviewSchema = mongoose.Schema({
     title: String,
     description: String,
     moviename: String,
+    userRole: String,
     date: { type: Date, default: Date.now }
 }, {collection: 'reviews'});
 

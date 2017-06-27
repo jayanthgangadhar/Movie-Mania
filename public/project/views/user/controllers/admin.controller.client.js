@@ -4,7 +4,7 @@
         .controller("adminController", adminController);
 
 
-    function adminController(userService, reviewService, $location, followingService){
+    function adminController(userService, reviewService, $location, followingService, currentUser){
         var model = this;
         //vm.type = "user";
         //vm.admin = "admin";
@@ -29,6 +29,14 @@
         model.logout = logout;
         model.viewFollowing = viewFollowing;
         model.unFollow = unFollow;
+        model.clearFollowing = clearFollowing;
+        model.user = currentUser;
+        model.admin = "ADMIN";
+
+
+        function clearFollowing() {
+            model.followingUsers = [];
+        }
 
         function logout() {
             userService
@@ -79,6 +87,7 @@
 
 
         function viewFollowing(id) {
+            console.log(id);
             model.thisUserID = id;
             followingService
                 .findAllfollowingforId(id)
@@ -90,7 +99,6 @@
                             .findUserById(id)
                             .then(function (user) {
                                 model.followingUsers.push(user)
-                               // console.log(model.followingUsers)
                             })
                     });
                     //
@@ -152,11 +160,6 @@
                 .then(function (users) {
                     model.users = users.data;
                 });
-            /*userService
-                .findUserbytype(vm.type)
-                .then(function (users) {
-                    vm.users = users;
-                });*/
         }
         init();
 

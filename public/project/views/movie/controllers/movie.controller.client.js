@@ -25,9 +25,15 @@
             model.map = {};
             // console.log("USER:"+currentUser._id);
             reviewService
-                .findReviewsforMovie(id)
+                .findUserReviewsforMovie(id)
                 .then(function (reviews) {
                     model.reviews = reviews.data;
+                    // console.log(model.reviews)
+                });
+            reviewService
+                .findCriticReviewsforMovie(id)
+                .then(function (reviews) {
+                    model.creviews = reviews.data;
                     // console.log(model.reviews)
                 });
             homeService
@@ -92,6 +98,7 @@
                     model.rev.moviename = model.movie.original_title;
                     model.rev.user_name = model.user.username;
                     model.rev.userID = model.user._id;
+                    model.rev.userRole = model.user.role;
                     reviewService
                         .createReview(review, model.userId)
                         .then(function (newReview) {

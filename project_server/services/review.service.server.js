@@ -5,7 +5,8 @@ var reviewModel = require("../models/review/review.model.server");
 app.post("/api/user/:id/review", createReview);
 app.post("/api/user/del/:userId/review", deleteReviewsforUser);
 app.get("/api/user/:userId/review", findAllReviews);
-app.get("/api/rest/:mid/review", findReviewsforMovie);
+app.get("/api/rest/:mid/review", findUserReviewsforMovie);
+app.get("/api/rest/:mid/critic/review", findCriticReviewsforMovie);
 app.get("/api/review/:reviewId", findReviewById);
 app.put("/api/review/:reviewId", updateReview);
 app.delete("/api/review/:reviewId", deleteReview);
@@ -40,6 +41,30 @@ function findAllReviews(req, res) {
     reviewModel
         .findAllReviews(userId)
         .then(function (reviews) {
+            res.json(reviews);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
+function findUserReviewsforMovie(req, res) {
+    var movieId = req.params.mid;
+    reviewModel
+        .findUserReviewsforMovie(movieId)
+        .then(function (reviews) {
+            // console.log("reviews:"+reviews);
+            res.json(reviews);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
+function findCriticReviewsforMovie(req, res) {
+    var movieId = req.params.mid;
+    reviewModel
+        .findCriticReviewsforMovie(movieId)
+        .then(function (reviews) {
+            // console.log("reviews:"+reviews);
             res.json(reviews);
         }, function (err) {
             res.sendStatus(500).send(err);
