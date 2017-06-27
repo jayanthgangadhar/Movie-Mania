@@ -52,6 +52,7 @@
                         </div>
                     </div>
                     <div class="panel-body">
+                        <div class="alert alert-danger"  ng-if="(model.followingUsers).length < 1"> Not following anyone yet !!! </div>
                         <div ng-repeat="user in model.followingUsers">
                             <h1><a href="#!/user/profile/{{user._id}}"> {{user.username}}</a></h1>
                         </div>

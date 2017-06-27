@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-app.use(session({secret:'something'}));
+app.use(session({secret:process.env.secretKey}));
 app.use(passport.initialize());
 app.use(passport.session());
 

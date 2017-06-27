@@ -48,6 +48,7 @@
 
     <div class="container-fluid">
         <div class="column col-xs-12 col-sm-8" style="margin-top: 20px">
+            <div class="alert alert-danger"  ng-if="(model.reviews).length < 1"> No reviews yet ! </div>
             <div class="media" ng-repeat="review in model.reviews | filter: model.query | orderBy: '-date'">
                 <div class="col-xs-4 pull-right">
                     <a class="btn btn-danger hidden-xs" data-toggle="modal" data-target="#myModal" ng-click="model.sendData(review)">View</a>

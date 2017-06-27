@@ -7,7 +7,8 @@ app.get("/api/movie/:movieId/cast",findCastByMovieid);
 app.get("/api/movie/:movieId/similar", findSimilarMovie);
 app.get("/api/popularmovie", findPoplarMovies);
 
-var TMDBKey = "ae05a08f330d781c8557ec8fafeea6a6";
+var TMDBKey = process.env.TMDBKey;
+    // "ae05a08f330d781c8557ec8fafeea6a6";
 var baseUrl = "api.themoviedb.org";
 var path = "/3/OPTION?api_key=API_KEY&language=en&query=";
 
@@ -72,23 +73,7 @@ function findMovieById(req,res) {
     http.get(options,callback);
 }
 
-function findTrailerByMovieid(req,res) {
-    // var id = req.params.movieId;
-    // var url = "http://api.themoviedb.org/3/movie/"+id+"/videos?api_key=ae05a08f330d781c8557ec8fafeea6a6";
-    // http.get(url, function(response) {
-    //     var finalData = "";
-    //
-    //     response.on("data", function (data) {
-    //         res.send(data);
-    //     });
-    //
-    // });
-
-    // var baseUrl = "api.themoviedb.org";
-    // var path = "/3/OPTION?api_key=API_KEY&language=en&query=";
-    //
-
-    var id=req.params.movieId;
+function findTrailerByMovieid(req,res) {var id=req.params.movieId;
     var options={
         host:baseUrl,
         path:path
