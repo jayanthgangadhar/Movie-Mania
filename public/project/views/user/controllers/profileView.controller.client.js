@@ -3,7 +3,7 @@
         .module("project")
         .controller("profileViewController",profileViewController);
 
-    function profileViewController($routeParams,$location ,userService, currentUser, followingService) {
+    function profileViewController($routeParams,$location ,userService, currentUser, followingService, reviewService) {
         var model =this;
         var id = $routeParams.id;
         model.logout = logout;
@@ -11,6 +11,10 @@
         model.unFollow = unFollow;
         model.cId = currentUser._id;
         model.curUser = currentUser;
+        model.followerUsers = [];
+        model.followingUsers = [];
+        model.flag;
+
 
         function init() {
              userService
@@ -18,9 +22,13 @@
                  .then(function (user) {
                      // console.log(user);
                      model.user = user;
-
                  });
-
+            reviewService
+                .findAllReviews(id)
+                .then(function (reviews) {
+                    model.reviews = reviews.data;
+                    // console.log(model.reviews)
+                });
             followingService
                 .findAllfollowersforId(id)
                 .then(function (followers) {
@@ -46,10 +54,24 @@
                                 model.followingUsers.push(user)
                             })
                     });
-                    //
+                    console.log(model.following);
+                    changeFlag(model.cId, model.followers);
+                    console.log(model.flag)
                 });
+
+
         }
         init();
+
+        function changeFlag(id, following) {
+            for(u in following){
+                if (id === following[u]){
+                    model.flag = true;
+                    return;
+                }
+            }
+            model.flag = false;
+        }
 
         function logout() {
             userService
@@ -72,6 +94,7 @@
                         .remFollower(model.following)
                         .then(function (user) {
                             model.user = user.data;
+                            init();
                         });
                 })
         }
@@ -88,6 +111,7 @@
                     .addFollowers(model.following)
                     .then(function (user) {
                         model.user = user.data;
+                        init();
                     })
 
             })

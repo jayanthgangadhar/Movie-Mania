@@ -13,6 +13,7 @@
         model.deleteReview = deleteReview;
         model.submit = submit;
         model.logout = logout;
+        model.admin = "ADMIN";
         // console.log(model.userID);
 
 

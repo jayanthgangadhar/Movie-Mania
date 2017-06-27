@@ -5,8 +5,9 @@
 
     function movieController($routeParams, homeService, $sce, userService, $location, currentUser, reviewService) {
         var model = this;
-        model.user = currentUser;
-        model.demo = currentUser;
+        // model.user = currentUser;
+        model.thisUser = currentUser;
+        // model.demo = currentUser;
         model.userId = currentUser._id;
         var id = $routeParams.movieId;
         model.generateUrl = generateUrl;
@@ -96,9 +97,9 @@
                     model.movie = movie;
                     model.rev.movieID = id;
                     model.rev.moviename = model.movie.original_title;
-                    model.rev.user_name = model.user.username;
-                    model.rev.userID = model.user._id;
-                    model.rev.userRole = model.user.role;
+                    model.rev.user_name = model.thisUser.username;
+                    model.rev.userID = model.thisUser._id;
+                    model.rev.userRole = model.thisUser.role;
                     reviewService
                         .createReview(review, model.userId)
                         .then(function (newReview) {
@@ -162,7 +163,7 @@
             userService
                 .logout()
                 .then(function () {
-                    $location.url("/user/search")
+                    $location.url("/")
                 })
 
         }

@@ -46,13 +46,16 @@
         }
 
         function register(user) {
-            // console.log(user);
             if (user.password !== user.password2){
                 model.uerror = "Sorry, the passwords do not match";
                 return
             }
             if (typeof user.username === "undefined"){
                 model.uerror = "Please enter a valid username";
+                return
+            }
+            if (typeof user.role === "undefined"){
+                model.uerror = "Please select a role";
                 return
             }
             userService

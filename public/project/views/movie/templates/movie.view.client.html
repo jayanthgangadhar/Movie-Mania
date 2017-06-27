@@ -13,15 +13,15 @@
 
             <div class="collapse navbar-collapse navbar-right" id="myNavbar" >
                 <ul class="nav navbar-nav">
-                    <li><a ng-hide="model.checkEmpty(model.user)" href="#!/user/profile/{{model.demo._id}}" >{{model.demo.username}}</a></li>
-                    <li><a ng-hide="model.checkEmpty(model.user)" ng-click="model.logout()">Logout</a></li>
+                    <li><a ng-hide="model.checkEmpty(model.thisUser)" href="#!/user/profile/{{model.thisUser._id}}" >{{model.thisUser.username}}</a></li>
+                    <li><a ng-hide="model.checkEmpty(model.thisUser)" ng-click="model.logout()">Logout</a></li>
                 </ul>
             </div>
 
             <div class="collapse navbar-collapse navbar-right" id="checkNavbar" >
                 <ul class="nav navbar-nav">
-                    <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#myModal" >Login</a></li>
-                    <li><a ng-if="model.checkEmpty(model.user)" data-toggle="modal" data-target="#regModal">Register</a></li>
+                    <li><a ng-if="model.checkEmpty(model.thisUser)" data-toggle="modal" data-target="#myModal" >Login</a></li>
+                    <li><a ng-if="model.checkEmpty(model.thisUser)" data-toggle="modal" data-target="#regModal">Register</a></li>
                 </ul>
             </div>
         </div>
@@ -51,7 +51,7 @@
                     <input type="password" class="form-control"
                            ng-model="model.user.password" placeholder="Password">
                 </div>
-                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
+                <a class="btn btn-success btn-block" ng-click="model.login(model.thisUser)">Login</a>
                 <a href="/api/auth/facebook" class="btn btn-primary btn-block">
                     <span class="fa fa-facebook"></span>
                     Facebook
@@ -78,34 +78,41 @@
             <div class="modal-body container-fluid">
                 <form name="form1">
                     <div class="form-group">
-                        <input type="text" ng-model="model.user.username" name="username"
+                        <label for="role">Please a select role</label>
+                        <select id="role" ng-model="model.thisUser.role">
+                            <option value="CRITIC" selected>CRITIC</option>
+                            <option value="USER">USER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="model.thisUser.username" name="username"
                                class="form-control" placeholder="Username"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" ng-model="model.user.firstname"
+                        <input type="text" ng-model="model.thisUser.firstname"
                                class="form-control" placeholder="Firstname" >
                     </div>
                     <div class="form-group">
-                        <input type="text" ng-model="model.user.lastname"
+                        <input type="text" ng-model="model.thisUser.lastname"
                                class="form-control" placeholder="Lastname" >
                     </div>
                     <div class="form-group">
-                        <input type="email" ng-model="model.user.email"
+                        <input type="email" ng-model="model.thisUser.email"
                                class="form-control" placeholder="Email" >
                     </div>
                     <div class="form-group">
-                        <input type="tel" ng-model="model.user.phone"
+                        <input type="tel" ng-model="model.thisUser.phone"
                                class="form-control" placeholder="Phone number" >
                     </div>
                     <div class="form-group">
-                        <input type="password" ng-model="model.user.password" name="Password"
+                        <input type="password" ng-model="model.thisUser.password" name="Password"
                                class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" ng-model="model.user.password2" name="CPassword"
+                        <input type="password" ng-model="model.thisUser.password2" name="CPassword"
                                class="form-control" placeholder="Confirm Password" required>
                     </div>
-                    <button type="submit" class="btn btn-success btn-block" ng-click="model.register(model.user)">Register</button>
+                    <button type="submit" class="btn btn-success btn-block" ng-click="model.register(model.thisUser)">Register</button>
                 </form>
             </div>
         </div>
@@ -167,7 +174,6 @@
                         <div ng-repeat="review in model.reviews" class="panel-footer" >
                             <div class="row" >
                                 <div class="col-xs-2">
-                                    <!--style="width: 10%; padding-right: 70px"-->
                                     <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"
                                          height="80px" width="80px">
                                 </div>
@@ -186,8 +192,6 @@
 
 
                         </div>
-                        <!--<li><b>{{review.title}}</b></li>-->
-                        <!--<li>{{review.description}}</li>-->
                     </div>
                 </div>
             </div>

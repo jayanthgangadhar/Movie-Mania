@@ -44,11 +44,10 @@
                 model.uerror = "Please enter a valid username";
                 return
             }
-            /*if (typeof user.role === "undefined"){
+            if (typeof user.role === "undefined"){
                 model.uerror = "Please select a role";
                 return
-            }*/
-            user.role = "ADMIN";
+            }
             userService
                 .findUserByUsername(user.username)
                 .then(function (user) {

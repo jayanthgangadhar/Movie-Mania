@@ -51,7 +51,7 @@
                 }
             })
             .when('/user/reviews',{
-                templateUrl:'./views/review/templates/review.view.client.html',
+                templateUrl:'./views/user/templates/reviews.view.client.html',
                 controller:'reviewController',
                 controllerAs:'model',
                 resolve:{

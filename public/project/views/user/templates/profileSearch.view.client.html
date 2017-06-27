@@ -48,9 +48,10 @@
             <div class="container-fluid">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="container-fluid">Profile
-                            <a class="btn btn-success pull-right"  ng-click="model.followUser()" >Follow</a>
-                            <a class="btn btn-danger pull-right" ng-click="model.unFollow()" >Unfollow</a>
+                        <div class="container-fluid">
+                            <h1>Profile</h1>
+                            <a class="btn btn-success pull-right" ng-hide="model.flag"  ng-click="model.followUser()" >Follow</a>
+                            <a class="btn btn-danger pull-right" ng-show="model.flag" ng-click="model.unFollow()" >Unfollow</a>
                         </div>
                     </div>
                     <div class="panel-body">
