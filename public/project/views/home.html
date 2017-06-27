@@ -46,7 +46,7 @@
         </a>
     </div>
 
-    <div class="movieDisplay row container-fluid  panel thumbnail" ng-if="typeof(model.movies) !== undefined" id="searchBody" style="border: solid 2px black" >
+    <div class="movieDisplay row container-fluid  panel thumbnail" id="searchBody" style="border: solid 2px black" >
         <div class="panel-heading">Search Results</div>
         <div class="movies col-sm-6 col-md-4 panel-body" ng-repeat="movie in model.movies">
             <span class="label label-default pull-right">Release: {{movie.release_date}}</span>
