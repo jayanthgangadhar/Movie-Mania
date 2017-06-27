@@ -20,10 +20,15 @@ userModel.findAllfollowingforId = findAllfollowingforId;
 userModel.findAllfollowersforId = findAllfollowersforId;
 userModel.unFollow= unFollow;
 userModel.deleteMessagesforUser = deleteMessagesforUser;
-
-
+userModel.findUserByFacebookId = findUserByFacebookId;
 
 module.exports = userModel;
+
+
+function findUserByFacebookId(facebookId) {
+    return userModel
+        .findOne({'facebook.id': facebookId});
+}
 
 function addReview(reviewId,userId) {
     return userModel

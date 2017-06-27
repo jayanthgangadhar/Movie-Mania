@@ -17,7 +17,7 @@
 
         // model.loggedUser = currentUser;
 
-        // console.log(model.movies);
+
         function init() {
             model.popularMovies = [];
             homeService
@@ -29,6 +29,7 @@
                         // .replace("original","w500");
                         model.popularMovies.push(popularMov);
                         // console.log(model.simMovies);
+
                     }
                 })
 

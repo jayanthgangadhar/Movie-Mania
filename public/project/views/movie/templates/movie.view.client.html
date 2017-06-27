@@ -7,8 +7,22 @@
                 <span class="icon-bar"></span>
 
             </button>
+
             <a class="navbar-brand" href="#!/user/search">Movie</a>
         </div>
+
+        <form method = post>
+            <div class="input-group container-fluid" id="searchBar" >
+                <input ng-model="searchText" type="text" class="form-control" placeholder="Search for movie by title" height="10px">
+
+                <span class="input-group-btn">
+            <button ng-click="model.search(searchText)" class="btn btn-default" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+            </div>
+
+        </form>
         <div>
             <div>
                 <div class="collapse navbar-collapse navbar-right" id="myNavbar">
@@ -177,7 +191,7 @@
                     </div>
                     <div id="userreviews"  class="tab-pane fade">
                         <br>
-                        <div class="alert alert-danger"  ng-if="(model.reviews).length < 1"> No reviews posted by users </div>
+                        <div class="alert alert-danger"  ng-if="(model.reviews).length < 1"> No reviews posted by Users </div>
                         <div ng-repeat="review in model.reviews" class="panel-footer" >
                             <div class="row" >
                                 <div class="col-xs-2">

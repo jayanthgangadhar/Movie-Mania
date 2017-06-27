@@ -99,7 +99,7 @@
                         reviewService
                             .deleteReviewsforUser(ID)
                             .then(function (status) {
-                                init();
+                                $location.url("/")
                             });
                     })
             }
